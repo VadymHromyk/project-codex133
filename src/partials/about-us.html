@@ -1,3 +1,93 @@
-<section id="about-us" class="section">
-  <div class="container">About us</div>
+<section id="about-us" class="section about_us">
+  <div class="container about_us__container">
+    <div class="about_us__content">
+      <h2 class="title about_us__title">Про нас</h2>
+      <div class="about_us__desc">
+        <p class="about_us__text">
+          У нашій 'Солодкій Майстерні' ми створюємо неповторні солодкі шедеври,
+          що приносять радість та задоволення. Наша місія — пропонувати
+          високоякісні десерти, які поєднують у собі вишуканий смак, свіжі
+          інгредієнти та естетичний вигляд.
+        </p>
+      </div>
+    </div>
+
+    <div class="about_us__gallery">
+      <div class="swiper about_us__swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide about_us__slide">
+            <img
+              class="about_us__img"
+              srcset="../img/1x/about1.jpg 1x, ../img/2x/about1-2x.jpg 2x"
+              src="../img/1x/about1.jpg"
+              alt="Процес приготування профітролей"
+              width="335"
+              height="250"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="swiper-slide about_us__slide">
+            <img
+              class="about_us__img"
+              srcset="../img/1x/about2.jpg 1x, ../img/2x/about2-2x.jpg 2x"
+              src="../img/1x/about2.jpg"
+              alt="Команда кондитерів обговорює рецепт"
+              width="335"
+              height="250"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="swiper-slide about_us__slide">
+            <img
+              class="about_us__img"
+              srcset="../img/1x/about3.jpg 1x, ../img/2x/about3-2x.jpg 2x"
+              src="../img/1x/about3.jpg"
+              alt="Вітрина кондитерської з десертами"
+              width="335"
+              height="250"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="swiper-slide about_us__slide">
+            <img
+              class="about_us__img"
+              srcset="../img/1x/about4.jpg 1x, ../img/2x/about4-2x.jpg 2x"
+              src="../img/1x/about4.jpg"
+              alt="Дівчина коштує шматочок торта"
+              width="335"
+              height="250"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="swiper-pagination about_us__pagination"></div>
+      </div>
+    </div>
+
+    <div class="about_us__controls">
+      <button
+        type="button"
+        class="about_us__btn about_us__btn--prev swiper-button-prev"
+        aria-label="Попередній слайд"
+      >
+        <svg width="48" height="48">
+          <use href="../img/icons/sprite.svg#arrow_back"></use>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="about_us__btn about_us__btn--next swiper-button-next"
+        aria-label="Наступний слайд"
+      >
+        <svg width="48" height="48">
+          <use href="../img/icons/sprite.svg#arrow_forward"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
 </section>
