@@ -1,12 +1,22 @@
-import { getCategories, getDesserts } from './services/api/api';
+import {
+  getCategories,
+  getDesserts,
+  getDessertsById,
+} from './services/api/api';
 
 const selectContainer = document.querySelector('.dessert-list-select');
 const categoriesContainer = document.querySelector('.dessert-categories-list');
+const loader = document.querySelector('.loader');
+
 const dessertContainer = document.querySelector('.dessert-list');
+const loadMoreBtn = document.querySelector('.dessert-load-btn');
 
 console.log(selectContainer);
 console.log(categoriesContainer);
 let currentPage = 1;
+
+selectContainer.addEventListener('change', filterByCategory);
+categoriesContainer.addEventListener('change', filterByCategory);
 async function initDessertList() {
   try {
     const categories = await getCategories();
@@ -28,18 +38,33 @@ async function initDessertList() {
 }
 initDessertList();
 
-// async function initDessert() {
-//   try {
-//     const desserts = await getDesserts({
-//       page: 1,
-//       limit: 8,
-//     });
-//     console.log(desserts);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
-// initDessert();
+async function filterByCategory(event) {
+  dessertContainer.innerHTML = '';
+  try {
+    showLoader();
+    loadMoreBtn.hidden = true;
+    const category = event.target.value;
+    let data;
+    if (category === 'all') {
+      data = await getDesserts({
+        page: currentPage,
+        limit: 8,
+      });
+    } else {
+      data = await getDesserts({
+        category,
+        page: currentPage,
+        limit: 8,
+      });
+      console.log(data);
+    }
+    renderDesserts(data.desserts);
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    hideLoader();
+  }
+}
 
 function renderSelect(arr) {
   const markup = arr
@@ -80,11 +105,18 @@ function renderDesserts(arr) {
         <span class="dessert-list-price">${price} грн</span>
         <button class="dessert-list-btn" type="button" aria-label="dessert list">
           <svg class="dessert-list-icon" width="24" height="24">
-            <use href="/img/icons.svg#arrow_outward"></use>
+            <use href="/img/icons/sprite.svg#arrow_outward"></use>
           </svg>
         </button>
       </li>`
     )
     .join('');
   dessertContainer.insertAdjacentHTML('beforeend', markup);
+}
+
+function showLoader() {
+  loader.style.display = 'block';
+}
+function hideLoader() {
+  loader.style.display = 'none';
 }
