@@ -14,51 +14,72 @@ const loadMoreBtn = document.querySelector('.dessert-load-btn');
 console.log(selectContainer);
 console.log(categoriesContainer);
 let currentPage = 1;
+const LIMIT = 8;
+let currentCategory = 'all';
 
 selectContainer.addEventListener('change', filterByCategory);
 categoriesContainer.addEventListener('change', filterByCategory);
+loadMoreBtn.addEventListener('click', loadMoreDesserts);
+
 async function initDessertList() {
   try {
+    showLoader();
     const categories = await getCategories();
-    console.log(categories);
-    console.log(categories);
+    const allCategories = [
+      {
+        name: 'Всі десерти',
+        _id: 'all',
+      },
+      ...categories,
+    ];
+    renderSelect(allCategories);
+    renderCategoriesBtn(allCategories);
 
-    renderSelect(categories);
-    renderCategoriesBtn(categories);
-    const desserts = await getDesserts({
+    const data = await getDesserts({
       page: currentPage,
-      limit: 8,
+      limit: LIMIT,
     });
-    console.log(desserts);
 
-    renderDesserts(desserts.desserts);
+    renderDesserts(data.desserts);
+    const totalPages = Math.ceil(data.totalItems / data.limit);
+    if (currentPage < totalPages) {
+      showLoadMoreBtn();
+    } else {
+      hideLoadMoreBtn();
+    }
   } catch (error) {
     console.log(error.message);
+  } finally {
+    hideLoader();
   }
 }
 initDessertList();
 
 async function filterByCategory(event) {
-  dessertContainer.innerHTML = '';
   try {
     showLoader();
-    loadMoreBtn.hidden = true;
-    const category = event.target.value;
-    let data;
-    if (category === 'all') {
-      data = await getDesserts({
-        page: currentPage,
-        limit: 8,
-      });
-    } else {
-      data = await getDesserts({
-        category,
-        page: currentPage,
-        limit: 8,
-      });
-      console.log(data);
+    currentCategory = event.target.value;
+    currentPage = 1;
+    dessertContainer.innerHTML = '';
+
+    const params = {
+      page: currentPage,
+      limit: LIMIT,
+    };
+
+    if (currentCategory !== 'all') {
+      params.category = currentCategory;
     }
+    const data = await getDesserts(params);
+
     renderDesserts(data.desserts);
+    const totalPages = Math.ceil(data.totalItems / data.limit);
+
+    if (currentPage < totalPages) {
+      showLoadMoreBtn();
+    } else {
+      hideLoadMoreBtn();
+    }
   } catch (error) {
     console.log(error.message);
   } finally {
@@ -68,7 +89,10 @@ async function filterByCategory(event) {
 
 function renderSelect(arr) {
   const markup = arr
-    .map(({ name, _id }) => `<option value="${_id}">${name}</option>`)
+    .map(
+      ({ name, _id }) => `
+    <option value="${_id}">${name}</option>`
+    )
     .join('');
   selectContainer.insertAdjacentHTML('beforeend', markup);
 }
@@ -79,6 +103,7 @@ function renderCategoriesBtn(arr) {
       ({ name, _id }, index) => `
    <label for="${_id}" class="dessert-category-label">
         <input
+        ${index === 0 ? 'checked' : ''}
         id="${_id}" type="radio" name="category" 
         value="${_id}" class="dessert-category-input" />
         <span class="dessert-category-btn">
@@ -114,9 +139,44 @@ function renderDesserts(arr) {
   dessertContainer.insertAdjacentHTML('beforeend', markup);
 }
 
+async function loadMoreDesserts() {
+  try {
+    showLoader();
+
+    currentPage += 1;
+
+    const params = {
+      page: currentPage,
+      limit: LIMIT,
+    };
+
+    if (currentCategory !== 'all') {
+      params.category = currentCategory;
+    }
+    const data = await getDesserts(params);
+    renderDesserts(data.desserts);
+    const totalPages = Math.ceil(data.totalItems / data.limit);
+
+    if (currentPage >= totalPages) {
+      hideLoadMoreBtn();
+    }
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    hideLoader();
+  }
+}
+
 function showLoader() {
   loader.style.display = 'block';
 }
 function hideLoader() {
   loader.style.display = 'none';
+}
+function showLoadMoreBtn() {
+  loadMoreBtn.classList.remove('hidden');
+}
+
+function hideLoadMoreBtn() {
+  loadMoreBtn.classList.add('hidden');
 }
