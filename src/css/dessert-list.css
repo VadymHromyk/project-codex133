@@ -63,6 +63,8 @@
 }
 
 .dessert-list-item {
+  display: flex;
+  flex-direction: column;
   position: relative;
   border: 1px solid #080c0c;
   border-radius: 16px;
@@ -136,10 +138,13 @@
 }
 
 .dessert-list-price {
+
   font-weight: 600;
   font-size: 20px;
   line-height: 1.5;
   color: #080c0c;
+  margin-top: auto;
+  margin-bottom: 7px;
 }
 
 .dessert-load-btn {
