@@ -1,0 +1,236 @@
+.about_us {
+  background-color: #f5fdfd;
+  text-align: center;
+}
+
+.about_us__container {
+  position: relative;
+}
+
+.about_us__content {
+  max-width: 100%;
+  margin: 0 auto 40px auto;
+}
+
+.about_us__title {
+  margin-bottom: 24px;
+}
+
+.about_us__text {
+  font-family: var(--font-family);
+  font-size: 18px;
+  line-height: 1.5;
+  color: #080c0c;
+}
+
+.about_us__gallery {
+  width: 100%;
+}
+
+.about_us__swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+  #about-us .about_us__swiper .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transform: none;
+  }
+
+  .about_us__slide {
+    width: 100% !important;
+  }
+
+  .about_us__img {
+    width: 100%;
+    height: 248px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .about_us__controls {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #about-us .about_us__content {
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about_us__text {
+    font-size: 16px;
+  }
+
+  #about-us .about_us__swiper {
+    padding-bottom: 40px;
+  }
+
+  .about_us__swiper .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .about_us__slide {
+    width: auto;
+  }
+
+  .about_us__img {
+    width: 100%;
+    height: 252px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .about_us__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 252px;
+    bottom: 40px;
+    pointer-events: none;
+    z-index: 15;
+  }
+
+  .about_us__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 2px solid #080c0c;
+    color: #080c0c;
+    pointer-events: auto;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.1s ease;
+  }
+
+  .about_us__btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: #080c0c;
+    fill: none;
+    pointer-events: none;
+  }
+
+  .about_us__btn::after {
+    display: none;
+  }
+
+  .about_us__btn--prev {
+    left: 32px;
+  }
+
+  .about_us__btn--next {
+    right: 32px;
+  }
+
+  .about_us__btn:hover,
+  .about_us__btn:focus-visible {
+    background-color: #f19898;
+    border-color: #080c0c;
+    color: #080c0c;
+  }
+
+  .about_us__btn--prev:active {
+    background-color: #c07979;
+    transform: translateY(-50%) scale(0.93);
+  }
+
+  .about_us__btn--next:active {
+    background-color: #c07979;
+    transform: translateY(-50%) scale(0.93);
+  }
+
+  .about_us__btn.swiper-button-disabled {
+    background-color: transparent;
+    border-color: rgba(8, 12, 12, 0.3);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .about_us__btn.swiper-button-disabled svg {
+    stroke: rgba(8, 12, 12, 0.3);
+  }
+
+  #about-us .about_us__swiper .about_us__pagination.swiper-pagination-bullets {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    display: flex;
+    gap: 8px;
+    z-index: 25;
+    pointer-events: auto;
+  }
+
+  .about_us__pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #d1c7c4;
+    border-radius: 50%;
+    opacity: 1;
+    margin: 0 !important;
+    cursor: pointer;
+    pointer-events: auto;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .about_us__pagination .swiper-pagination-bullet:hover {
+    background-color: #080c0c;
+    transform: scale(1.2);
+  }
+
+  #about-us .about_us__pagination .swiper-pagination-bullet-active {
+    background-color: #080c0c;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #about-us .about_us__content {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
+  }
+
+  .about_us__img {
+    height: 478px;
+  }
+
+  .about_us__controls {
+    height: 478px;
+  }
+
+  .about_us__btn--prev {
+    left: 64px;
+  }
+
+  .about_us__btn--next {
+    right: 64px;
+  }
+}
