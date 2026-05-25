@@ -1,108 +1,235 @@
-/* Контейнер вашої секції */
 .feedbacks-section {
-  padding: 40px 20px;
-  background-color: #fafafa;
+  padding: 40px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.feedbacks-section .container {
+  position: relative;
+  width: 100%;
+}
+
+.swiper-rel-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 64px;
 }
 
 .gallery__swiper {
   width: 100%;
-  padding-bottom: 70px; /* Створює простір знизу ДЛЯ КНОПОК І КРАПОК */
-  position: relative;
+  overflow: hidden;
 }
 
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
+.gallery__swiper .swiper-slide {
   height: auto;
-}
-
-/* Картка */
-.testimonial-card {
-  background: #ffffff;
-  border: 1px solid #0b0803;
-  border-radius: 20px;
-  padding: 24px;
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 220px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* 🎛️ Головна магія розташування кнопок під карткою */
-.slider-controls {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between; /* Розносить крапки вліво, стрілки вправо */
-  align-items: center;
-  z-index: 10;
-}
-
-/* Стиль пагінації (крапки) */
-.gallery__pagination.swiper-pagination-bullets {
-  position: static;
-  width: auto;
-  display: flex;
-  gap: 8px;
-}
-
-.gallery__pagination .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: #0b0803;
-  opacity: 0.2;
-  border-radius: 50%;
-  margin: 0 !important;
-  transition: opacity 0.3s;
-}
-
-.gallery__pagination .swiper-pagination-bullet-active {
-  opacity: 1; /* Активна крапка стає чорною */
-}
-
-/* Блок зі стрілочками */
-.slider-buttons {
-  display: flex;
-  gap: 12px;
 }
 
 .gallery__button-prev,
 .gallery__button-next {
-  position: static;
-  margin-top: 0;
   width: 44px;
   height: 44px;
+  border: 1px solid #111111;
+  background-color: #ffffff;
+  color: #111111;
   border-radius: 50%;
-  border: 1px solid #0b0803;
-  background: transparent;
-  color: #0b0803;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.1s ease;
+  outline: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
 }
 
-/* Вимикаємо стандартні стрілки Swiper, бо ми маємо свої текстові */
-.gallery__button-prev::after,
-.gallery__button-next::after {
-  display: none;
+.gallery__button-prev {
+  right: 56px;
+}
+
+.gallery__button-next {
+  right: 0;
 }
 
 .gallery__button-prev:hover,
-.gallery__button-next:hover {
-  background-color: #0b0803;
-  color: #ffffff;
+.gallery__button-next:hover,
+.gallery__button-prev:focus-visible,
+.gallery__button-next:focus-visible {
+  background-color: #f3a4a4;
+  border-color: #111111;
+  color: #111111;
 }
 
-/* Стиль для зірочок Raty, якщо вони підключені тегом <i> */
-.star-rating i {
-  font-size: 20px;
-  color: #0b0803; /* Чорні зірочки як на макеті */
-  margin-right: 4px;
+.gallery__button-prev:active,
+.gallery__button-next:active {
+  background-color: #713838;
+  border-color: #111111;
+  color: #111111;
+  transform: scale(0.95);
+}
+
+.gallery__button-prev.swiper-button-disabled,
+.gallery__button-next.swiper-button-disabled {
+  background-color: #ffffff;
+  border-color: #e0e0e0;
+  color: #e0e0e0;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Пагінація (Мобільна версія) */
+.slider-layout-wrapper {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: auto;
+  z-index: 5;
+}
+
+.slider-controls-group {
+  display: flex;
+  align-items: center;
+}
+
+.gallery__pagination.swiper-pagination-bullets {
+  position: static;
+  width: auto;
+}
+
+.gallery__pagination .swiper-pagination-bullet {
+  background-color: #e0e0e0;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+}
+
+.gallery__pagination .swiper-pagination-bullet-active {
+  background-color: #111111;
+}
+
+.section-title {
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-scheme-1-text, #111111);
+}
+
+.section-description {
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--color-scheme-1-text, #111111);
+}
+
+.testimonial-card {
+  border: 1px solid #111111;
+  border-radius: 20px;
+  padding: 24px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.star-rating.js-raty-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.review-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text, #111111);
+  margin-top: 0;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.client-name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text, #111111);
+  margin-top: auto;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .swiper-rel-wrapper {
+    padding-bottom: 0;
+  }
+
+  .gallery__button-prev,
+  .gallery__button-next {
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .gallery__button-prev:active,
+  .gallery__button-next:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .gallery__button-prev {
+    left: -22px;
+    right: auto;
+  }
+
+  .gallery__button-next {
+    right: -22px;
+  }
+
+  .slider-layout-wrapper {
+    position: static;
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .slider-controls-group {
+    justify-content: center;
+  }
+
+  .testimonial-card {
+    min-height: 233px;
+    padding: 20px;
+  }
+
+  .review-text {
+    font-size: 16px;
+    line-height: 140%;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .gallery__swiper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 48px;
+  }
+  .section-description {
+    margin-bottom: 80px;
+  }
 }
