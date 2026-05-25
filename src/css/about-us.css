@@ -1,5 +1,6 @@
 .about_us {
-  background-color: #ffffff;
+  background-color: #f5fdfd;
+  text-align: center;
 }
 
 .about_us__container {
@@ -7,23 +8,18 @@
 }
 
 .about_us__content {
-  text-align: center;
   max-width: 100%;
   margin: 0 auto 40px auto;
 }
 
 .about_us__title {
-  font-weight: 700;
-  text-align: center;
   margin-bottom: 24px;
 }
 
 .about_us__text {
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 400;
+  font-family: var(--font-family);
   font-size: 18px;
   line-height: 1.5;
-  text-align: center;
   color: #080c0c;
 }
 
@@ -37,11 +33,11 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .about_us__swiper .swiper-wrapper {
+  #about-us .about_us__swiper .swiper-wrapper {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    transform: none !important;
+    transform: none;
   }
 
   .about_us__slide {
@@ -62,18 +58,18 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .about_us__content {
+  #about-us .about_us__content {
     max-width: 580px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .about_us__text {
     font-size: 16px;
   }
 
-  .about_us__swiper {
-    padding-bottom: 40px !important;
+  #about-us .about_us__swiper {
+    padding-bottom: 40px;
   }
 
   .about_us__swiper .swiper-wrapper {
@@ -122,7 +118,7 @@
     background-color: #ffffff;
     border: 2px solid #080c0c;
     color: #080c0c;
-    pointer-events: auto !important;
+    pointer-events: auto;
     transition:
       background-color 0.2s ease,
       border-color 0.2s ease,
@@ -178,7 +174,7 @@
     stroke: rgba(8, 12, 12, 0.3);
   }
 
-  .about_us__swiper .about_us__pagination.swiper-pagination-bullets {
+  #about-us .about_us__swiper .about_us__pagination.swiper-pagination-bullets {
     position: absolute;
     bottom: 0px;
     left: 50%;
@@ -187,7 +183,7 @@
     display: flex;
     gap: 8px;
     z-index: 25;
-    pointer-events: auto !important;
+    pointer-events: auto;
   }
 
   .about_us__pagination .swiper-pagination-bullet {
@@ -195,10 +191,10 @@
     height: 8px;
     background-color: #d1c7c4;
     border-radius: 50%;
-    opacity: 1 !important;
+    opacity: 1;
     margin: 0 !important;
     cursor: pointer;
-    pointer-events: auto !important;
+    pointer-events: auto;
     transition:
       background-color 0.3s ease,
       transform 0.3s ease;
@@ -209,16 +205,16 @@
     transform: scale(1.2);
   }
 
-  .about_us__pagination .swiper-pagination-bullet-active {
-    background-color: #080c0c !important;
+  #about-us .about_us__pagination .swiper-pagination-bullet-active {
+    background-color: #080c0c;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .about_us__content {
+  #about-us .about_us__content {
     max-width: 840px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 48px;
   }
 
