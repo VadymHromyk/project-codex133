@@ -1,9 +1,7 @@
 /* dessert-list */
-
 .section {
-  margin: 64px 0;
+  background-color: #f5fdfd;
 }
-
 
 .dessert-container {
   margin-bottom: 40px;
@@ -14,7 +12,7 @@
 }
 
 .dessert-list-title {
-  font-family: "Comfortaa", sans-serif;
+  font-family: var(--second-family);
   font-weight: 700;
   font-size: 36px;
   line-height: 1.2;
@@ -25,6 +23,7 @@
 }
 
 .dessert-list-subtitle {
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
@@ -81,6 +80,7 @@
 }
 
 .dessert-list-category {
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -89,6 +89,7 @@
 }
 
 .dessert-list-product {
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 18px;
   line-height: 1.5;
@@ -97,6 +98,7 @@
 }
 
 .dessert-list-description {
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -118,7 +120,7 @@
   height: 44px;
   padding: 0;
   transition: background-color 250ms ease,
-    transform 350ms ease;
+    transform 300ms ease;
 }
 
 .dessert-list-icon {
@@ -132,11 +134,11 @@
 
 .dessert-list-btn:active {
   background-color: #c07979;
-  transform: scale(1.02);
+  transform: scale(0.98);
 }
 
 .dessert-list-price {
-
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 20px;
   line-height: 1.5;
@@ -158,7 +160,8 @@
   line-height: 1.5;
   color: #080c0c;
   transition: background-color 250ms ease-in-out,
-    border-color 250ms ease-in-out;
+    border-color 250ms ease-in-out,
+    transform 300ms ease;
 }
 
 .dessert-load-btn:not(:disabled):hover,
@@ -170,6 +173,7 @@
 .dessert-load-btn:not(:disabled):active {
   border: 2px solid #080c0c;
   background-color: #f5b6b6;
+  transform: scale(0.98);
 }
 
 .dessert-load-btn:disabled {
@@ -404,9 +408,10 @@
   }
 }
 
-.loader.is-hidden{
-   display: none;
+.loader.is-hidden {
+  display: none;
 }
+
 .dessert-load-btn.is-hidden {
   display: none;
 }
