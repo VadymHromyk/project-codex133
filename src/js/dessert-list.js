@@ -1,9 +1,11 @@
+import { Notify } from 'notiflix';
+
 import {
   getCategories,
   getDesserts,
   getDessertsById,
 } from './services/api/api';
-
+console.log(window.Notiflix);
 const selectContainer = document.querySelector('.dessert-list-select');
 const categoriesContainer = document.querySelector('.dessert-categories-list');
 const loader = document.querySelector('.loader');
@@ -15,9 +17,12 @@ let currentPage = 1;
 const LIMIT = 8;
 let currentCategory = 'all';
 
+document.addEventListener('DOMContentLoaded', initDessertList);
 selectContainer.addEventListener('change', filterByCategory);
 categoriesContainer.addEventListener('change', filterByCategory);
 loadMoreBtn.addEventListener('click', loadMoreDesserts);
+dessertContainer.addEventListener('click', openDessertModal);
+// initDessertList();
 
 async function initDessertList() {
   try {
@@ -44,18 +49,15 @@ async function initDessertList() {
     renderDesserts(data.desserts);
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
-    if (currentPage < totalPages) {
-      showLoadMoreBtn();
-    } else {
-      hideLoadMoreBtn();
-    }
+    loadMoreBtn.classList.remove('is-hidden');
+    loadMoreBtn.disabled = currentPage >= totalPages;
   } catch (error) {
-    console.log(error.message);
+    console.error(error);
+    Notify.failure('Помилка завантаження');
   } finally {
     hideLoader();
   }
 }
-initDessertList();
 
 async function filterByCategory(event) {
   try {
@@ -63,6 +65,8 @@ async function filterByCategory(event) {
     hideLoadMoreBtn();
 
     currentCategory = event.target.value;
+    if (!currentCategory) return;
+
     currentPage = 1;
     dessertContainer.innerHTML = '';
     const params = {
@@ -74,26 +78,28 @@ async function filterByCategory(event) {
       params.category = currentCategory;
     }
     const data = await getDesserts(params);
-
+    if (!data.desserts.length) {
+      Notify.warning('Десерти не знайдені');
+      return;
+    }
     renderDesserts(data.desserts);
+    // Notify.success('Десерти завантажено');
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
-    if (currentPage < totalPages) {
-      showLoadMoreBtn();
-    } else {
-      hideLoadMoreBtn();
-    }
+    loadMoreBtn.classList.remove('is-hidden');
+    loadMoreBtn.disabled = currentPage >= totalPages;
   } catch (error) {
-    console.log(error.message);
+    console.error(error);
+    Notify.failure('Помилка завантаження');
   } finally {
     hideLoader();
   }
 }
 
 async function loadMoreDesserts() {
-  currentPage += 1;
-  loadMoreBtn.disabled = true;
   showLoader();
+  loadMoreBtn.disabled = true;
+  currentPage += 1;
   hideLoadMoreBtn();
   try {
     const params = {
@@ -116,19 +122,25 @@ async function loadMoreDesserts() {
 
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
-    if (currentPage < totalPages) {
-      showLoadMoreBtn();
-    } else {
-      hideLoadMoreBtn();
-    }
+    loadMoreBtn.classList.remove('is-hidden');
+    loadMoreBtn.disabled = currentPage >= totalPages;
   } catch (error) {
-    console.log(error.message);
+    console.error(error);
+    Notify.failure('Помилка завантаження');
   } finally {
-    loadMoreBtn.disabled = false;
     hideLoader();
   }
 }
+function openDessertModal(event) {
+  const btn = event.target.closest('.dessert-list-btn');
 
+  if (!btn) return;
+  const card = btn.closest('.dessert-list-item');
+  const id = card.dataset.id;
+  console.log(id);
+  Notify.success('Успешно');
+  // openModal(id);
+}
 function renderSelect(arr) {
   const markup = arr
     .map(

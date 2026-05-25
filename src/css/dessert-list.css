@@ -404,7 +404,13 @@
   }
 }
 
-.loader.is-hidden,
+.loader.is-hidden{
+   display: none;
+}
 .dessert-load-btn.is-hidden {
   display: none;
+}
+
+.loader {
+  z-index: 9999;
 }
