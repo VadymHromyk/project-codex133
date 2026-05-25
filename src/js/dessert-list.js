@@ -1,4 +1,5 @@
-import { Notify } from 'notiflix';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 import {
   getCategories,
@@ -16,6 +17,8 @@ const loadMoreBtn = document.querySelector('.dessert-load-btn');
 let currentPage = 1;
 const LIMIT = 8;
 let currentCategory = 'all';
+const select = document.querySelector('.dessert-list-select');
+const wrapper = document.querySelector('.dessert-select-wrapper');
 
 document.addEventListener('DOMContentLoaded', initDessertList);
 selectContainer.addEventListener('change', filterByCategory);
@@ -35,7 +38,14 @@ async function initDessertList() {
       ...categories,
     ];
     if (!allCategories.length) {
-      Notify.warning('Категорії не знайдені');
+      iziToast.error({
+        titleColor: 'white',
+        position: 'topRight',
+        title: 'Error',
+        backgroundColor: 'red',
+        messageColor: 'white',
+        message: 'No images found for this query. Please try again.',
+      });
       return;
     }
     renderSelect(allCategories);
@@ -46,7 +56,14 @@ async function initDessertList() {
       limit: LIMIT,
     });
     if (!data.desserts.length) {
-      Notify.warning('Десерти не знайдені');
+      iziToast.error({
+        titleColor: 'white',
+        position: 'topRight',
+        title: 'Error',
+        backgroundColor: 'red',
+        messageColor: 'white',
+        message: 'Something went wrong. Please try again later.',
+      });
       return;
     }
     renderDesserts(data.desserts);
@@ -55,7 +72,14 @@ async function initDessertList() {
     loadMoreBtn.classList.remove('is-hidden');
     loadMoreBtn.disabled = currentPage >= totalPages;
   } catch (error) {
-    Notify.failure('Помилка завантаження');
+    iziToast.error({
+      titleColor: 'white',
+      position: 'topRight',
+      title: 'Error',
+      backgroundColor: 'red',
+      messageColor: 'white',
+      message: 'Something went wrong. Please try again later.',
+    });
   } finally {
     hideLoader();
   }
@@ -80,7 +104,14 @@ async function filterByCategory(event) {
     }
     const data = await getDesserts(params);
     if (!data.desserts.length) {
-      Notify.warning('Десерти не знайдені');
+      iziToast.error({
+        titleColor: 'white',
+        position: 'topRight',
+        title: 'Error',
+        backgroundColor: 'red',
+        messageColor: 'white',
+        message: 'Something went wrong. Please try again later.',
+      });
       return;
     }
     renderDesserts(data.desserts);
@@ -88,17 +119,31 @@ async function filterByCategory(event) {
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
     loadMoreBtn.classList.remove('is-hidden');
-    loadMoreBtn.disabled = currentPage >= totalPages;
+    // loadMoreBtn.disabled = currentPage >= totalPages;
 
-    // if (currentPage >= totalPages) {
-    //   loadMoreBtn.disabled = true;
-    //   Notify.success('Десерти завантажено');
-    // } else {
-    //   loadMoreBtn.disabled = false;
-    // }
+    if (currentPage >= totalPages) {
+      loadMoreBtn.disabled = true;
+      iziToast.success({
+        titleColor: 'white',
+        position: 'topRight',
+        title: 'OK',
+        backgroundColor: 'green',
+        messageColor: 'white',
+        message: 'Десерти завантажено',
+      });
+    } else {
+      loadMoreBtn.disabled = false;
+    }
   } catch (error) {
     console.error(error);
-    Notify.failure('Помилка завантаження');
+    iziToast.error({
+      titleColor: 'white',
+      position: 'topRight',
+      title: 'Error',
+      backgroundColor: 'red',
+      messageColor: 'white',
+      message: 'Something went wrong. Please try again later.',
+    });
   } finally {
     hideLoader();
   }
@@ -134,7 +179,14 @@ async function loadMoreDesserts() {
     loadMoreBtn.disabled = currentPage >= totalPages;
   } catch (error) {
     console.error(error);
-    Notify.failure('Помилка завантаження');
+    iziToast.error({
+      titleColor: 'white',
+      position: 'topRight',
+      title: 'Error',
+      backgroundColor: 'red',
+      messageColor: 'white',
+      message: 'Something went wrong. Please try again later.',
+    });
   } finally {
     hideLoader();
   }
@@ -200,6 +252,17 @@ function renderDesserts(arr) {
     .join('');
   dessertContainer.insertAdjacentHTML('beforeend', markup);
 }
+select.addEventListener('mousedown', () => {
+  wrapper.classList.add('is-open');
+});
+
+select.addEventListener('change', () => {
+  wrapper.classList.remove('is-open');
+});
+
+select.addEventListener('blur', () => {
+  wrapper.classList.remove('is-open');
+});
 function showLoader() {
   loader.classList.remove('is-hidden');
 }

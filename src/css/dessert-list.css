@@ -36,12 +36,64 @@
   width: 100%;
 }
 
+.dessert-select-wrapper {
+  position: relative;
+}
+
 .dessert-list-select {
+  appearance: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
   border: 2px solid #202424;
   border-radius: 6px;
   padding: 8px 12px;
   width: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    border-color 250ms ease,
 }
+
+.dessert-list-arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  fill: #080c0c;
+  stroke-width: 2;
+  transform: translateY(-50%);
+  transition: transform 300ms ease,
+    fill 250ms ease;
+  pointer-events: none;
+}
+
+.dessert-select-wrapper.is-open .dessert-list-select {
+  background-color: #ebfcfb;
+}
+
+.dessert-list-select:hover+.dessert-list-arrow,
+.dessert-list-select:focus+.dessert-list-arrow {
+  fill: #3f605f;
+}
+
+
+.dessert-list-select:hover {
+  outline: none;
+  border-color: #3f605f;
+}
+
+.dessert-list-select:focus {
+  outline: none;
+  border-color: #3f605f;
+
+}
+
+.dessert-select-wrapper.is-open .dessert-list-arrow {
+  fill: #3f605f;
+  transform: translateY(-50%) scale(1.1);
+}
+
 
 .dessert-list {
   display: flex;
@@ -114,17 +166,22 @@
   bottom: 16px;
   right: 16px;
   border: 2px solid #080c0c;
-  border-radius: 100px;
+  border-radius: 50%;
   background-color: transparent;
   width: 44px;
   height: 44px;
   padding: 0;
   transition: background-color 250ms ease,
-    transform 300ms ease;
+    transform 150ms ease;
+  transform-origin: center;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .dessert-list-icon {
-  pointer-events: none;
+
+  display: block;
+
 }
 
 .dessert-list-btn:hover,
@@ -134,7 +191,7 @@
 
 .dessert-list-btn:active {
   background-color: #c07979;
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
 .dessert-list-price {
@@ -161,7 +218,7 @@
   color: #080c0c;
   transition: background-color 250ms ease-in-out,
     border-color 250ms ease-in-out,
-    transform 300ms ease;
+    transform 250ms ease;
 }
 
 .dessert-load-btn:not(:disabled):hover,
@@ -173,7 +230,7 @@
 .dessert-load-btn:not(:disabled):active {
   border: 2px solid #080c0c;
   background-color: #f5b6b6;
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
 .dessert-load-btn:disabled {
