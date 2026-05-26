@@ -1,6 +1,6 @@
 .feedbacks-section {
   padding: 40px 0;
-  background-color: #ffffff;
+  background-color: var(--color-scheme-1-background);
   overflow: hidden;
 }
 

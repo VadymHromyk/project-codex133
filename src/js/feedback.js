@@ -1,21 +1,14 @@
-import $ from 'jquery';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-
+import izitoast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import starOn from '../img/icons/star-on.svg';
 import starOff from '../img/icons/star-off.svg';
 import starHalf from '../img/icons/star-half.svg';
-
-window.$ = window.jQuery = $;
 import Raty from 'raty-js';
-$.fn.raty = function (options) {
-  return this.each(function () {
-    new Raty(this, options).init();
-  });
-};
 
 const BaseURL = 'https://deserts-store.b.goit.study/api';
 let feedbackSliderInstance = null;
@@ -49,7 +42,7 @@ async function fetchAndRenderFeedbacks() {
 
       const starElement = slide.querySelector('.js-raty-stars');
       if (starElement) {
-        $(starElement).raty({
+        new Raty(starElement, {
           score: item.rate || 5,
           readOnly: true,
           half: true,
@@ -59,13 +52,17 @@ async function fetchAndRenderFeedbacks() {
           starOn: starOn,
           starOff: starOff,
           starHalf: starHalf,
-        });
+        }).init();
       }
     });
 
     initFeedbackSlider();
   } catch (error) {
-    console.error('Помилка завантаження відгуків:', error);
+    iziToast.error({
+      title: 'Помилка',
+      message: 'Помилка завантаження відгуків:',
+      position: 'topRight',
+    });
   }
 }
 
