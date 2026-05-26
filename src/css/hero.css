@@ -1,6 +1,6 @@
 .hero {
   padding: 80px 0;
-  background-image: url("../img/1x/hero-mob.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/1x/hero-mob.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@
 
   .hero {
     padding: 120px 0;
-    background-image: url("../img/1x/hero-tab.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/1x/hero-tab.jpg");
   }
 
   .hero-container {
@@ -83,7 +83,8 @@
 
   .hero {
     padding: 160px 0;
-    background-image: url("../img/1x/hero.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url("../img/1x/hero.jpg");
   }
   .hero-btn:focus-visible{
     outline: 2px solid #000;
@@ -95,13 +96,13 @@
 
 
 @media (max-width: 767px) and (min-resolution: 192dpi) {
-  .hero { background-image: url("../img/2x/hero-mob2x.jpg"); }
+ .hero { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/2x/hero-mob2x.jpg"); }
 }
 @media (min-width: 768px) and (max-width: 1439px) and (min-resolution: 192dpi) {
-  .hero { background-image: url("../img/2x/hero-tab2x.jpg"); }
+  .hero { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/2x/hero-tab2x.jpg"); }
 }
 @media (min-width: 1440px) and (min-resolution: 192dpi) {
-  .hero { background-image: url("../img/2x/hero2x.jpg"); }
+  .hero { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/2x/hero2x.jpg"); }
 }
 
 
