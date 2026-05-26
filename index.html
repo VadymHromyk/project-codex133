@@ -23,9 +23,9 @@
     />
     <!-- Styles -->
     <script type="module" crossorigin src="/project-codex133/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-codex133/assets/vendor-CYpA0lme.js">
-    <link rel="stylesheet" crossorigin href="/project-codex133/assets/vendor-BQl7bc_B.css">
-    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-qgHdK-wT.css">
+    <link rel="modulepreload" crossorigin href="/project-codex133/assets/vendor-t7rkesM2.js">
+    <link rel="stylesheet" crossorigin href="/project-codex133/assets/vendor-CsAmYNuR.css">
+    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-xSdqo9C-.css">
   </head>
   <body>
     <!-- Header -->
@@ -42,10 +42,62 @@
 
 
       <!-- Dessert List section -->
-      <section id="dessert-list" class="section">
-  <div class="container">Dessert List</div>
-</section>
+      <section id="dessert-list" class="section section-dessert-list">
+  <div class="container">
+    <div class="dessert-container">
+      <div class="dessert-wrapper">
+        <h2 class="dessert-list-title title">Солодощі</h2>
+        <p class="dessert-list-subtitle">Спробуйте наші смачні десерти, які вас здивують!</p>
+      </div>
 
+      <div class="dessert-select-wrapper">
+        <label for="dessert-list-select" class="visually-hidden">Оберіть десерт</label>
+        <select id="dessert-list-select" class="dessert-list-select" name="desserts">
+          <!-- CATEGORIES TAB MOB-->
+          <!--  <option value="all">Всі десерти</option>-->
+        </select>
+        <svg class="dessert-list-arrow" width="28" height="28">
+          <use href="/project-codex133/assets/sprite-DppQYqKj.svg#keyboard_arrow_down"></use>
+        </svg>
+      </div>
+    </div>
+
+
+    <div class="dessert-categories-list">
+      <!-- <label class="dessert-category-label">
+        <input type="radio" name="category" value="all" class="dessert-category-input" checked />
+        <span class="dessert-category-btn">
+          Всі десерти
+        </span>
+      </label> -->
+      <!-- CATEGORIES -->
+    </div>
+
+
+    <ul class="dessert-list">
+      <!-- DESSERTS CONTAINER -->
+      <!-- <li class="dessert-list-item">
+        <div class="dessert-list-wrapper">
+          <img class="dessert-list-img" src="./img/hero-mob2x.jpg" alt="dessert list">
+        </div>
+        <p class="dessert-list-category">Шоколадні випічки</p>
+        <h3 class="dessert-list-product">Брауні з горіхами</h3>
+        <p class="dessert-list-description">Соковитий шоколадний пиріг з хрусткими горіхами.</p>
+        <span class="dessert-list-price">110 грн</span>
+        <button class="dessert-list-btn" type="button" aria-label="dessert list">
+          <svg class="dessert-list-icon" width="24" height="24">
+            <use href="/img/icons/sprite.svg#arrow_outward"></use>
+          </svg>
+        </button>
+      </li>
+      -->
+    </ul>
+    <span class="loader is-hidden"></span>
+    <button class="dessert-load-btn is-hidden" type="button">Завантажити ще</button>
+
+  </div>
+  </div>
+</section>
 
       <!-- About Us section -->
       <section id="about-us" class="section about_us">

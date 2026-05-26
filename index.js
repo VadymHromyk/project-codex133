@@ -1,4 +1,28 @@
-import{S as d,N as l,P as u,A as p}from"./assets/vendor-CYpA0lme.js";(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&r(i)}).observe(document,{childList:!0,subtree:!0});function n(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function r(e){if(e.ep)return;e.ep=!0;const s=n(e);fetch(e.href,s)}})();let t=null;function c(){window.innerWidth>=768?t||(t=new d(".about_us__swiper",{modules:[l,u],loop:!1,slidesPerView:2,spaceBetween:24,observer:!0,observeParents:!0,observeSlideChildren:!0,watchSlidesProgress:!0,watchOverflow:!0,updateOnWindowResize:!0,navigation:{nextEl:".about_us__btn--next",prevEl:".about_us__btn--prev",disabledClass:"swiper-button-disabled"},pagination:{el:".about_us__pagination",type:"bullets",clickable:!0,bulletClass:"swiper-pagination-bullet",bulletActiveClass:"swiper-pagination-bullet-active"},grabCursor:!0,allowTouchMove:!0})):t&&(t.destroy(!0,!0),t=null)}document.addEventListener("DOMContentLoaded",()=>{c(),window.addEventListener("resize",c)});setTimeout(c,100);const g=document.querySelector(".accordion-wrapper"),v=`<div class="accordion-container">
+import{a as P,i as E,S as $,N as x,P as O,A as T}from"./assets/vendor-t7rkesM2.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))r(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const u of i.addedNodes)u.tagName==="LINK"&&u.rel==="modulepreload"&&r(u)}).observe(document,{childList:!0,subtree:!0});function t(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function r(a){if(a.ep)return;a.ep=!0;const i=t(a);fetch(a.href,i)}})();const L=P.create({baseURL:"https://deserts-store.b.goit.study/api/",headers:{"Content-Type":"application/json"}}),v=async(s={})=>(await L.get("/desserts",{params:s})).data,q=async()=>(await L.get("/categories")).data,g=document.querySelector(".dessert-list-select"),_=document.querySelector(".dessert-categories-list"),M=document.querySelector(".loader"),b=document.querySelector(".dessert-list"),o=document.querySelector(".dessert-load-btn");let c=1;const l=8;let d="all";const f=document.querySelector(".dessert-select-wrapper");document.addEventListener("DOMContentLoaded",D);g.addEventListener("change",C);_.addEventListener("change",C);o.addEventListener("click",A);b.addEventListener("click",B);async function D(){w();try{const s=await q(),e=[{name:"Всі десерти",_id:"all"},...s];if(!e.length){n("Помилка завантаження");return}I(e),j(e);const t=await v({page:c,limit:l});if(!t.desserts.length){n("Помилка завантаження");return}m(t.desserts);const r=Math.ceil(t.totalItems/l);o.classList.remove("is-hidden"),c>=r?o.disabled=!0:o.disabled=!1}catch{n("Помилка завантаження")}finally{y()}}async function C(s){if(w(),k(),d=s.target.value,!d){n("Помилка завантаження");return}c=1,b.innerHTML="";try{const e={page:c,limit:l};d!=="all"&&(e.category=d);const t=await v(e);if(!t.desserts.length){n("Помилка завантаження");return}m(t.desserts);const r=Math.ceil(t.totalItems/l);o.classList.remove("is-hidden"),c>=r?o.disabled=!0:o.disabled=!1}catch{n("Помилка завантаження")}finally{y()}}async function A(){w(),o.disabled=!0,c+=1,k();try{const s={page:c,limit:l};d!=="all"&&(s.category=d);const e=await v(s);if(!e.desserts.length){n("Помилка завантаження");return}m(e.desserts);const r=document.querySelector(".dessert-list-item").getBoundingClientRect().height;window.scrollBy({top:r*1,behavior:"smooth"});const a=Math.ceil(e.totalItems/l);o.classList.remove("is-hidden"),c>=a?o.disabled=!0:o.disabled=!1}catch{n("Помилка завантаження")}finally{y()}}function B(s){const e=s.target.closest(".dessert-list-btn");if(!e)return;const t=e.closest(".dessert-list-item");t&&t.dataset.id}function I(s){const e=s.map(({name:t,_id:r})=>`
+    <option value="${r}">${t}</option>`).join("");g.innerHTML=e}function j(s){const e=s.map(({name:t,_id:r})=>`
+   <label for="${r}" class="dessert-category-label">
+        <input ${r==="all"?"checked":""}
+        id="${r}" type="radio" name="category" 
+        value="${r}" class="dessert-category-input" />
+        <span class="dessert-category-btn">
+       ${t}
+        </span>
+      </label>
+      `).join("");_.innerHTML=e}function m(s){const e=s.map(({name:t,_id:r,image:a,price:i,category:u,description:S})=>`
+  <li class="dessert-list-item" data-id="${r}">
+        <div class="dessert-list-wrapper">
+          <img class="dessert-list-img" src="${a}" alt="${t}">
+        </div>
+        <p class="dessert-list-category">${u.name}</p>
+        <h3 class="dessert-list-product">${t}</h3>
+        <p class="dessert-list-description">${S}</p>
+        <span class="dessert-list-price">${i} грн</span>
+        <button class="dessert-list-btn" type="button" aria-label="dessert list">
+          <svg class="dessert-list-icon" width="24" height="24">
+            <use href="/img/icons/sprite.svg#arrow_outward"></use>
+          </svg>
+        </button>
+      </li>`).join("");b.insertAdjacentHTML("beforeend",e)}function w(){M.classList.remove("is-hidden")}function y(){M.classList.add("is-hidden")}function k(){o.classList.add("is-hidden")}g.addEventListener("mousedown",()=>{f.classList.add("is-open")});g.addEventListener("change",()=>{f.classList.remove("is-open")});g.addEventListener("blur",()=>{f.classList.remove("is-open")});function n(s){E.error({message:s,theme:"dark",backgroundColor:"#c07979"})}let p=null;function h(){window.innerWidth>=768?p||(p=new $(".about_us__swiper",{modules:[x,O],loop:!1,slidesPerView:2,spaceBetween:24,observer:!0,observeParents:!0,observeSlideChildren:!0,watchSlidesProgress:!0,watchOverflow:!0,updateOnWindowResize:!0,navigation:{nextEl:".about_us__btn--next",prevEl:".about_us__btn--prev",disabledClass:"swiper-button-disabled"},pagination:{el:".about_us__pagination",type:"bullets",clickable:!0,bulletClass:"swiper-pagination-bullet",bulletActiveClass:"swiper-pagination-bullet-active"},grabCursor:!0,allowTouchMove:!0})):p&&(p.destroy(!0,!0),p=null)}document.addEventListener("DOMContentLoaded",()=>{h(),window.addEventListener("resize",h)});setTimeout(h,100);const H=document.querySelector(".accordion-wrapper"),N=`<div class="accordion-container">
     <div class="ac">
       <h2 class="ac-header">
         <button type="button" class="ac-trigger">
@@ -168,5 +192,5 @@ import{S as d,N as l,P as u,A as p}from"./assets/vendor-CYpA0lme.js";(function()
         </p>
       </div>
     </div>
-  </div>`;g.insertAdjacentHTML("beforeend",v);new p(".accordion-container");
+  </div>`;H.insertAdjacentHTML("beforeend",N);new T(".accordion-container");
 //# sourceMappingURL=index.js.map
