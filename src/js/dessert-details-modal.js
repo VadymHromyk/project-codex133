@@ -1,3 +1,5 @@
+import { getDessertsById } from './services/api/api';
+
 function buildStars(rating) {
   const full = Math.floor(rating);
   const half = rating % 1 >= 0.5 ? 1 : 0;
@@ -29,8 +31,9 @@ function buildStars(rating) {
   );
 }
 
-function openModal(card) {
-  // DOM refs беремо тут 
+// Змінено: приймає id замість card.dataset,
+// бо dessert-list.js рендерить картки тільки з data-id
+export async function openModal(id) {
   const overlay          = document.getElementById('modalOverlay');
   const closeBtn         = document.getElementById('modalClose');
   const modalImg         = document.getElementById('modalImg');
@@ -41,15 +44,16 @@ function openModal(card) {
   const modalDesc        = document.getElementById('modalDesc');
   const modalIngredients = document.getElementById('modalIngredients');
 
-  const d = card.dataset;
-  modalImg.src               = d.img;
-  modalImg.alt               = d.title;
-  modalTag.textContent       = d.tag;
-  modalTitle.textContent     = d.title;
-  modalPrice.textContent     = d.price;
-  modalStars.innerHTML       = buildStars(parseFloat(d.rating));
-  modalDesc.textContent      = d.desc;
-  modalIngredients.innerHTML = `<strong>Склад:</strong> ${d.ingredients}`;
+  const dessert = await getDessertsById(id);
+
+  modalImg.src               = dessert.image;
+  modalImg.alt               = dessert.name;
+  modalTag.textContent       = dessert.category?.name ?? '';
+  modalTitle.textContent     = dessert.name;
+  modalPrice.textContent     = `${dessert.price} грн`;
+  modalStars.innerHTML       = buildStars(parseFloat(dessert.rating ?? 0));
+  modalDesc.textContent      = dessert.description;
+  modalIngredients.innerHTML = `<strong>Склад:</strong> ${dessert.ingredients ?? ''}`;
 
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -63,21 +67,21 @@ function closeModal() {
 }
 
 function initDessertModal() {
-  // Картки
-  document.querySelectorAll('.dessert-card').forEach(card => {
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'button');
-    card.addEventListener('click', () => openModal(card));
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') openModal(card);
-    });
-  });
-
-  // Закриття
-  const overlay      = document.getElementById('modalOverlay');
-  const closeBtn     = document.getElementById('modalClose');
+  const overlay       = document.getElementById('modalOverlay');
+  const closeBtn      = document.getElementById('modalClose');
   const modalOrderBtn = document.getElementById('modalOrderBtn');
-  const modalTitle   = document.getElementById('modalTitle');
+  const modalTitle    = document.getElementById('modalTitle');
+
+  // Змінено: слухаємо клік на контейнері через делегування,
+  // бо картки .dessert-list-item рендеряться динамічно з API
+  const dessertList = document.querySelector('.dessert-list');
+  dessertList.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.dessert-list-btn');
+    if (!btn) return;
+    const card = btn.closest('.dessert-list-item');
+    if (!card) return;
+    await openModal(card.dataset.id);
+  });
 
   closeBtn.addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
@@ -89,5 +93,4 @@ function initDessertModal() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// Запускаємо після завантаження DOM
 document.addEventListener('DOMContentLoaded', initDessertModal);
