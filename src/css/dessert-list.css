@@ -1,5 +1,5 @@
 /* dessert-list */
-.section {
+.section-dessert-list {
   background-color: #f5fdfd;
 }
 
@@ -12,13 +12,8 @@
 }
 
 .dessert-list-title {
-  font-family: var(--second-family);
   font-weight: 700;
-  font-size: 36px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
   text-align: center;
-  color: #080c0c;
   margin-bottom: 24px;
 }
 
@@ -32,12 +27,9 @@
 
 }
 
-.dessert-list-wrapper {
-  width: 100%;
-}
-
 .dessert-select-wrapper {
   position: relative;
+  width: 100%;
 }
 
 .dessert-list-select {
@@ -52,8 +44,7 @@
   width: 100%;
   background-color: transparent;
   cursor: pointer;
-  transition:
-    border-color 250ms ease,
+  transition: border-color 250ms ease;
 }
 
 .dessert-list-arrow {
@@ -63,8 +54,7 @@
   fill: #080c0c;
   stroke-width: 2;
   transform: translateY(-50%);
-  transition: transform 300ms ease,
-    fill 250ms ease;
+  transition: transform 300ms ease, fill 250ms ease;
   pointer-events: none;
 }
 
@@ -216,8 +206,8 @@
   font-size: 16px;
   line-height: 1.5;
   color: #080c0c;
-  transition: background-color 250ms ease-in-out,
-    border-color 250ms ease-in-out,
+  transition: background-color 250ms ease,
+    border-color 250ms ease,
     transform 250ms ease;
 }
 

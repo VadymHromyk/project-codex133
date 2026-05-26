@@ -17,7 +17,6 @@ const loadMoreBtn = document.querySelector('.dessert-load-btn');
 let currentPage = 1;
 const LIMIT = 8;
 let currentCategory = 'all';
-const select = document.querySelector('.dessert-list-select');
 const wrapper = document.querySelector('.dessert-select-wrapper');
 
 document.addEventListener('DOMContentLoaded', initDessertList);
@@ -56,7 +55,7 @@ async function initDessertList() {
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
     loadMoreBtn.classList.remove('is-hidden');
-    // loadMoreBtn.disabled = currentPage >= totalPages;
+
     if (currentPage >= totalPages) {
       loadMoreBtn.disabled = true;
 
@@ -101,7 +100,6 @@ async function filterByCategory(event) {
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
     loadMoreBtn.classList.remove('is-hidden');
-    // loadMoreBtn.disabled = currentPage >= totalPages;
 
     if (currentPage >= totalPages) {
       loadMoreBtn.disabled = true;
@@ -132,6 +130,11 @@ async function loadMoreDesserts() {
       params.category = currentCategory;
     }
     const data = await getDesserts(params);
+    if (!data.desserts.length) {
+      showError('Помилка завантаження');
+      return;
+    }
+
     renderDesserts(data.desserts);
 
     const card = document.querySelector('.dessert-list-item');
@@ -144,7 +147,7 @@ async function loadMoreDesserts() {
     const totalPages = Math.ceil(data.totalItems / LIMIT);
 
     loadMoreBtn.classList.remove('is-hidden');
-    // loadMoreBtn.disabled = currentPage >= totalPages;
+
     if (currentPage >= totalPages) {
       loadMoreBtn.disabled = true;
 
@@ -164,6 +167,7 @@ function openDessertModal(event) {
 
   if (!btn) return;
   const card = btn.closest('.dessert-list-item');
+  if (!card) return;
   const id = card.dataset.id;
 
   // openModal(id);
@@ -236,15 +240,15 @@ function hideLoadMoreBtn() {
 }
 
 //SELECT
-select.addEventListener('mousedown', () => {
+selectContainer.addEventListener('mousedown', () => {
   wrapper.classList.add('is-open');
 });
 
-select.addEventListener('change', () => {
+selectContainer.addEventListener('change', () => {
   wrapper.classList.remove('is-open');
 });
 
-select.addEventListener('blur', () => {
+selectContainer.addEventListener('blur', () => {
   wrapper.classList.remove('is-open');
 });
 
@@ -253,7 +257,6 @@ function showSuccess(message) {
   iziToast.success({
     title: 'OK',
     message,
-    // theme: 'dark',
     backgroundColor: '#ebfcfb',
     position: 'topLeft',
   });
@@ -261,7 +264,6 @@ function showSuccess(message) {
 
 function showError(message) {
   iziToast.error({
-    // title: 'Error',
     message,
     theme: 'dark',
     backgroundColor: '#c07979',
