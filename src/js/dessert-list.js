@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import iconSprite from '../img/icons/sprite.svg?url';
 
 import {
   getCategories,
@@ -210,7 +211,7 @@ function renderDesserts(arr) {
         <span class="dessert-list-price">${price} грн</span>
         <button class="dessert-list-btn" type="button" aria-label="dessert list">
           <svg class="dessert-list-icon" width="24" height="24">
-            <use href="./img/icons/sprite.svg#arrow_outward"></use>
+            <use href="${iconSprite}#arrow_outward"></use>
           </svg>
         </button>
       </li>`
