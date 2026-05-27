@@ -1,3 +1,4 @@
+import '../css/order-modal.css';
 import { orderDessert } from './services/api/api.js';
 
 const modal = document.getElementById('contact-modal');
