@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
+    base: '/project-codex133/',
     root: 'src',
     build: {
       sourcemap: true,
