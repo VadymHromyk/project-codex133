@@ -55,6 +55,8 @@
   line-height: 1.5;
   font-weight: 500;
   transition: opacity 0.3s ease;
+   width: 100%;       
+    max-width: 300px;  
 }
 
 .hero-btn:hover {
@@ -116,13 +118,4 @@
 }
 @media (min-width: 1440px) and (min-resolution: 192dpi) {
   .hero { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/2x/hero2x.jpg"); }
-}
-
-
-
-@media (max-width: 767px) {
-  .hero-btn {
-    width: 100%;       
-    max-width: 300px;  
-  }
 }
