@@ -1,11 +1,10 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-// import { openOrderModal } from './order-modal';
 
-// ...
 import { getDessertsById } from './services/api/api';
+import { openOrderModal } from './order-modal'; // ← замінити на реальну назву функції
 
-// ── DOM refs (винесені за межі функцій) ───────────────────
+// ── DOM refs ──────────────────────────────────────────────
 const overlay          = document.getElementById('modalOverlay');
 const closeBtn         = document.getElementById('modalClose');
 const modalOrderBtn    = document.getElementById('modalOrderBtn');
@@ -86,12 +85,6 @@ overlay.addEventListener('click', e => { if (e.target === overlay) closeModal();
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 modalOrderBtn.addEventListener('click', () => {
-  iziToast.success({
-    message: `«${modalTitle.textContent}» додано до замовлення`,
-    backgroundColor: '#ebfcfb',
-    position: 'topRight',
-  });
   closeModal();
-  
-
+  openOrderModal(); // ← відкриває order-modal
 });

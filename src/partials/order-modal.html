@@ -1,1 +1,54 @@
-<div class=""></div>
+<div class="order-overlay" id="orderOverlay" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+  <div class="order-modal" id="orderModal">
+
+    <button class="order-close" id="orderClose" aria-label="Закрити">
+      <svg width="32" height="32">
+        <use href="/img/icons/sprite.svg#close"></use>
+      </svg>
+    </button>
+
+    <h3 class="order-title" id="orderTitle">Оформлення замовлення</h3>
+
+    <form class="order-form" id="orderForm" novalidate>
+
+      <label class="order-label" for="orderName">
+        Ім'я<span class="order-required">*</span>
+      </label>
+      <input
+        class="order-input"
+        id="orderName"
+        name="name"
+        type="text"
+        placeholder="Вікторія"
+        required
+      />
+
+      <label class="order-label" for="orderPhone">
+        Телефон<span class="order-required">*</span>
+      </label>
+      <input
+        class="order-input"
+        id="orderPhone"
+        name="phone"
+        type="tel"
+        placeholder="38 0__ ___ ____"
+        required
+      />
+
+      <label class="order-label" for="orderComment">
+        Коментар<span class="order-required">*</span>
+      </label>
+      <textarea
+        class="order-textarea"
+        id="orderComment"
+        name="comment"
+        placeholder="Ваш коментар"
+        rows="5"
+        required
+      ></textarea>
+
+      <button class="order-btn" type="submit">Надіслати заявку</button>
+
+    </form>
+  </div>
+</div>
