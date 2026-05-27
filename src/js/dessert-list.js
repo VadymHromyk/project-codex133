@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { openModal } from './dessert-details-modal';
 
 import {
   getCategories,
@@ -164,7 +165,7 @@ function openDessertModal(event) {
   if (!card) return;
   const id = card.dataset.id;
 
-  // openModal(id);
+ openModal(id);
 }
 
 //RENDER
