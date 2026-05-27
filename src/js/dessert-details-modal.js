@@ -18,17 +18,20 @@ const modalIngredients = document.getElementById('modalIngredients');
 
 // ── Public API (імпортується в dessert-list.js) ───────────
 export async function openModal(id) {
+  console.log('openModal викликано, id:', id);
   try {
     const dessert = await getDessertsById(id);
+    console.log('dessert:', dessert); // 
+    console.log('rating:', dessert.rating);
 
     modalImg.src               = dessert.image;
     modalImg.alt               = dessert.name;
     modalTag.textContent       = dessert.category?.name ?? '';
     modalTitle.textContent     = dessert.name;
     modalPrice.textContent     = `${dessert.price} грн`;
-    modalStars.innerHTML       = buildStars(parseFloat(dessert.rating ?? 0));
+    modalStars.innerHTML       = buildStars(parseFloat(dessert.rate ?? 0));
     modalDesc.textContent      = dessert.description;
-    modalIngredients.innerHTML = `<strong>Склад:</strong> ${dessert.ingredients ?? ''}`;
+    modalIngredients.innerHTML = `<strong>Склад:</strong> ${dessert.composition ?? ''}`;
 
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -53,29 +56,38 @@ function buildStars(rating) {
   const half  = rating % 1 >= 0.5 ? 1 : 0;
   const empty = 5 - full - half;
 
-  const starSVG = cls => `
-    <svg viewBox="0 0 24 24" class="${cls}">
-      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
-        fill="${cls === 'star-empty' ? 'none' : 'currentColor'}"
-        stroke="currentColor" stroke-width="1.5"/>
+  const FILLED_COLOR = '#080C0C';
+  const EMPTY_COLOR  = 'none';
+  const STROKE_COLOR = '#080C0C';
+
+  const starSVG = (filled) => `
+    <svg width="16" height="15.2" viewBox="0 0 24 24" class="${filled ? 'star-filled' : 'star-empty'}">
+      <polygon
+        points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+        fill="${filled ? FILLED_COLOR : EMPTY_COLOR}"
+        stroke="${STROKE_COLOR}"
+        stroke-width="1.5"/>
     </svg>`;
 
   const halfSVG = `
-    <svg viewBox="0 0 24 24" class="star-half">
+    <svg width="16" height="15.2" viewBox="0 0 24 24" class="star-half">
       <defs>
         <linearGradient id="hg">
-          <stop offset="50%" stop-color="currentColor"/>
-          <stop offset="50%" stop-color="transparent"/>
+          <stop offset="50%" stop-color="${FILLED_COLOR}"/>
+          <stop offset="50%" stop-color="${EMPTY_COLOR}"/>
         </linearGradient>
       </defs>
-      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
-        fill="url(#hg)" stroke="currentColor" stroke-width="1.5"/>
+      <polygon
+        points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+        fill="url(#hg)"
+        stroke="${STROKE_COLOR}"
+        stroke-width="1.5"/>
     </svg>`;
 
   return (
-    Array(full).fill(starSVG('star-filled')).join('') +
+    Array(full).fill(starSVG(true)).join('') +
     (half ? halfSVG : '') +
-    Array(empty).fill(starSVG('star-empty')).join('')
+    Array(empty).fill(starSVG(false)).join('')
   );
 }
 
@@ -86,5 +98,5 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 
 modalOrderBtn.addEventListener('click', () => {
   closeModal();
-  openOrderModal(); // ← відкриває order-modal
+  openOrderModal(); // 
 });

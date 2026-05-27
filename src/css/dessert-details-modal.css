@@ -97,14 +97,21 @@
 
 /* ── STARS ── */
 .modal-stars {
-  display: flex; gap: 4px;
+  display: flex;
+  gap: 4px;
   align-items: center;
   margin-bottom: 16px;
 }
-.modal-stars svg { width: 15px; height: 15px; flex-shrink: 0; }
-.star-filled { color: #f5a623; }
-.star-half   { color: #f5a623; }
-.star-empty  { color: #e0d0c0; }
+
+.modal-stars svg {
+  width: 16px;
+  height: 15.2px;
+  flex-shrink: 0;
+}
+
+.star-filled { color: #080C0C; }
+.star-half   { color: #080C0C; }
+.star-empty  { color: #080C0C; opacity: 0.2; } 
 
 /* ── DIVIDER ── */
 .modal-divider {
@@ -130,24 +137,30 @@
 /* ── BUTTON ── */
 .modal-btn {
   width: 100%;
-  height: 52px;
-  background: var(--blush); color: #fff;
-  border-radius: 50px;
-  font-family: var(--font-family);
-  font-size: .95rem; font-weight: 600;
-  margin-top: auto;
+  height: 44px;
+  background: var(--blush);
+  color: #080C0C;           /* Figma: Color/Neutral Darkest */
+  border: 1px solid var(--blush);
+  border-radius: 100px;
+  padding: 10px 24px;
+  font-family: var(--font-family); /* Work Sans */
+  font-size: 1rem;
+  font-weight: 500;          /* Figma: Weight 500 */
+  line-height: 1.5;          /* Figma: 150% */
+  letter-spacing: 0;         /* Figma: 0% */
   box-shadow: 0 6px 20px rgba(232,144,122,.35);
   transition: background .25s, transform .2s, box-shadow .25s;
 }
 .modal-btn:hover {
   background: #d96f56;
+  border-color: #d96f56;
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(232,144,122,.45);
 }
 
 /* ── TABLET ≥768px ── */
 @media only screen and (min-width: 768px) {
-  .modal-overlay { padding: 64px 32px; }
+  .modal-btn { width: 295px; }
 
   .modal {
     max-width: 704px;
@@ -165,7 +178,7 @@
 
 /* ── DESKTOP ≥1440px ── */
 @media only screen and (min-width: 1440px) {
-  .modal-overlay { padding: 64px 80px; }
+  .modal-btn { width: 295px; }
 
   .modal {
     flex-direction: row;
