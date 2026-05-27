@@ -1,6 +1,6 @@
 .feedbacks-section {
   padding: 40px 0;
-  background-color: var(--color-scheme-1-background);
+  background-color: #f5fdfd;
   overflow: hidden;
 }
 
@@ -29,7 +29,7 @@
 .gallery__button-next {
   width: 44px;
   height: 44px;
-  border: 1px solid #111111;
+  border: 2px solid #111111;
   background-color: #ffffff;
   color: #111111;
   border-radius: 50%;
@@ -49,6 +49,19 @@
   z-index: 5;
 }
 
+.arrow-icon {
+  fill: none;
+  stroke: #080c0c;
+  stroke-width: 2px;
+  transition: stroke 0.25s ease;
+}
+
+.arrow-icon path {
+  fill: none;
+  stroke: #080c0c;
+  stroke-width: 2px;
+}
+
 .gallery__button-prev {
   right: 56px;
 }
@@ -61,26 +74,27 @@
 .gallery__button-next:hover,
 .gallery__button-prev:focus-visible,
 .gallery__button-next:focus-visible {
-  background-color: #f3a4a4;
-  border-color: #111111;
-  color: #111111;
+  background-color: #f19898;
+  border-color: #080c0c;
+  color: #080c0c;
 }
 
 .gallery__button-prev:active,
 .gallery__button-next:active {
-  background-color: #713838;
-  border-color: #111111;
-  color: #111111;
+  background-color: #c07979;
+  border-color: #080c0c;
+  color: #080c0c;
   transform: scale(0.95);
 }
 
 .gallery__button-prev.swiper-button-disabled,
 .gallery__button-next.swiper-button-disabled {
-  background-color: #ffffff;
-  border-color: #e0e0e0;
-  color: #e0e0e0;
+  background-color: #f5fdfd;
+  border-color: #080c0c;
+  color: #080c0c;
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.2;
 }
 
 /* Пагінація (Мобільна версія) */
@@ -90,6 +104,7 @@
   left: 0;
   width: auto;
   z-index: 5;
+  padding-left: 20px;
 }
 
 .slider-controls-group {
@@ -100,6 +115,7 @@
 .gallery__pagination.swiper-pagination-bullets {
   position: static;
   width: auto;
+  text-align: left;
 }
 
 .gallery__pagination .swiper-pagination-bullet {
@@ -121,7 +137,7 @@
   line-height: 120%;
   letter-spacing: -0.01em;
   text-align: center;
-  color: var(--color-scheme-1-text, #111111);
+  color: #080c0c;
 }
 
 .section-description {
@@ -130,14 +146,14 @@
   font-size: 18px;
   line-height: 150%;
   text-align: center;
-  color: var(--color-scheme-1-text, #111111);
+  color: #080c0c;
 }
 
 .testimonial-card {
-  border: 1px solid #111111;
+  border: 2px solid #111111;
   border-radius: 20px;
   padding: 24px;
-  background-color: #ffffff;
+  background-color: #f5fdfd;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -156,7 +172,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;
-  color: var(--color-scheme-1-text, #111111);
+  color: #080c0c;
   margin-top: 0;
   margin-bottom: 24px;
   flex-grow: 1;
@@ -166,7 +182,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-scheme-1-text, #111111);
+  color: #080c0c;
   margin-top: auto;
   margin-bottom: 32px;
 }
