@@ -1,12 +1,3 @@
-import spriteSrc from '../img/icons/sprite.svg';
-
-(() => {
-document.querySelectorAll('use').forEach(use => {
-    const href = use.getAttribute('href');
-    if (!href) return;
-    const id = href.split('#')[1];
-    use.setAttribute('href', `${spriteSrc}#${id}`);
-  });
 
   const refs = {
     openModalBtn: document.querySelector("[data-menu-open]"),
@@ -17,7 +8,11 @@ document.querySelectorAll('use').forEach(use => {
   refs.openModalBtn.addEventListener("click", toggleModal);
   refs.closeModalBtn.addEventListener("click", toggleModal);
 
+    document.querySelectorAll('.mobile-nav-item, .mob-btn-shop').forEach(link => {
+    link.addEventListener('click', toggleModal);
+    });
+  
   function toggleModal() {
     refs.modal.classList.toggle("is-open");
   }
-})();
+;
