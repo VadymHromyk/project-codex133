@@ -463,10 +463,6 @@
   display: none;
 }
 
-.loader {
-  z-index: 9999;
-}
-
 
 .iziToast {
   min-width: 320px !important;
