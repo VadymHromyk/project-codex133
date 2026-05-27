@@ -171,7 +171,7 @@
 .dessert-list-icon {
 
   display: block;
-
+  fill: #080C0C;
 }
 
 .dessert-list-btn:hover,
@@ -229,7 +229,10 @@
   opacity: 0.3;
 }
 
-
+.dessert-list-btn,
+.dessert-list-item {
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
