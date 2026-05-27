@@ -1,6 +1,8 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+// import { openOrderModal } from './order-modal';
 
+// ...
 import { getDessertsById } from './services/api/api';
 
 // ── DOM refs (винесені за межі функцій) ───────────────────
@@ -90,4 +92,6 @@ modalOrderBtn.addEventListener('click', () => {
     position: 'topRight',
   });
   closeModal();
+  
+
 });
