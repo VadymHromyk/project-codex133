@@ -1,208 +1,319 @@
-:root {
-  --chocolate:    #080C0C;
-  --mocha:        #7c4a2d;
-  --caramel:      #c9843a;
-  --blush:        #e8907a;
-  --cream:        #faf7f2;
-  --text-main:    #080C0C;
-  --text-muted:   #7a6050;
-  --overlay:      rgba(0, 0, 0, 0.25);
-  --modal-radius: 20px;
-}
-
-/* ── OVERLAY ── */
 .modal-overlay {
-  position: fixed; inset: 0;
-  background: var(--overlay);
-  backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 2000;
-  padding: 64px 20px;
-  opacity: 0; pointer-events: none;
-  transition: opacity .35s ease;
-}
-.modal-overlay.active { opacity: 1; pointer-events: all; }
-
-/* ── MODAL — Mobile (base) ── */
-.modal {
-  background: #fff;
-  border-radius: var(--modal-radius);
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(46, 47, 66, 0.4);
+  padding: 64px 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal {
+  position: absolute;
+  background-color: #f5fdfd;
   max-width: 335px;
-  height: auto;
-  max-height: calc(100vh - 128px);
+  height: 711px;
+  max-height: 90vh;
+  padding: 64px 20px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  position: relative;
-  box-shadow: 0 24px 80px rgba(30, 10, 0, .30);
-  transform: translateY(40px) scale(.96);
-  transition: transform .4s cubic-bezier(.16, 1, .3, 1), opacity .4s ease;
-  opacity: 0;
-}
-.modal-overlay.active .modal {
-  transform: translateY(0) scale(1);
-  opacity: 1;
+  scrollbar-width: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* ── CLOSE BTN ── */
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
 .modal-close {
-  position: absolute; top: 16px; right: 16px;
-  width: 32px; height: 32px;
-  background: var(--cream);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--mocha);
-  transition: background .2s, color .2s;
-  z-index: 10;
-}
-.modal-close:hover { background: var(--blush); color: #fff; }
-
-/* ── IMAGE — заокруглені верхні кути ── */
-.modal-image {
-  width: 100%;
-  height: 220px;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: var(--modal-radius) var(--modal-radius) 0 0; /* ← фікс */
-}
-.modal-image img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .6s ease;
-}
-.modal-overlay.active .modal-image img { transform: scale(1.04); }
-
-/* ── TAG — прихований на мобайлі ── */
-.modal-tag {
-  display: none; /* ← в макеті немає на мобайлі */
-}
-
-/* ── TITLE ── */
-.modal-title {
-  font-family: var(--second-family);
-  font-size: 1.75rem; font-weight: 700;
-  line-height: 1.2; letter-spacing: -0.01em;
-  color: var(--chocolate);
-  margin-bottom: 4px;
-}
-
-/* ── PRICE — одразу під назвою ── */
-.modal-price {
-  font-family: var(--second-family);
-  font-size: 1.5rem; font-weight: 700;
-  color: var(--chocolate);
-  margin-bottom: 10px;
-}
-
-/* ── STARS ── */
-.modal-stars {
+  position: absolute;
   display: flex;
-  gap: 4px;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  top: 16px;
+  right: 16px;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  border: none;
+  padding: 0;
+  transition: transform 250ms ease;
 }
 
-.modal-stars svg {
-  width: 16px;
-  height: 15.2px;
-  flex-shrink: 0;
+.modal-close svg {
+  display: block;
+  fill: white;
+  stroke: #080C0C;
 }
 
-.star-filled { color: #080C0C; }
-.star-half   { color: #080C0C; }
-.star-empty  { color: #080C0C; opacity: 0.2; } 
-
-/* ── DIVIDER ── */
-.modal-divider {
-  height: 1px; background: #f0e8df;
-  margin-bottom: 16px;
+.modal-close:hover,
+.modal-close:focus {
+  transform: scale(1.1);
 }
 
-/* ── DESC ── */
-.modal-desc {
-  font-size: .875rem; font-weight: 400;
-  color: var(--text-main); line-height: 1.5;
+.modal-close:active {
+  transform: scale(0.98);
+}
+
+.modal-image {
+  border-radius: 16px;
+  overflow: hidden;
+  width: 295px;
+  min-height: 221px;
+  margin-bottom: 24px;
+}
+
+.modal-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+
+.modal-content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.modal-tag {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blush);
+  font-weight: 500;
   margin-bottom: 8px;
 }
 
-/* ── INGREDIENTS ── */
-.modal-ingredients {
-  font-size: .875rem; font-weight: 400;
-  color: var(--text-main); line-height: 1.5;
+.modal-title {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #080c0c;
+  margin-bottom: 8px;
+}
+
+.modal-price {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #080c0c;
   margin-bottom: 24px;
 }
-.modal-ingredients strong { font-weight: 600; }
 
-/* ── BUTTON ── */
+
+.modal-divider {
+  height: 1px;
+  background: #f0e8df;
+  margin-bottom: 14px;
+}
+
+.modal-desc {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #080c0c;
+  margin-bottom: 24px;
+}
+
+
+.modal-ingredients {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #080c0c;
+  margin-bottom: 24px;
+}
+
+.modal-ingredients strong {
+  font-weight: 700;
+}
+
+
+
 .modal-btn {
-  width: 100%;
-  height: 44px;
-  background: var(--blush);
-  color: #080C0C;           /* Figma: Color/Neutral Darkest */
-  border: 1px solid var(--blush);
+  display: flex;
+  justify-content: center;
+  border: 2px solid #f19898;
   border-radius: 100px;
-  padding: 10px 24px;
-  font-family: var(--font-family); /* Work Sans */
-  font-size: 1rem;
-  font-weight: 500;          /* Figma: Weight 500 */
-  line-height: 1.5;          /* Figma: 150% */
-  letter-spacing: 0;         /* Figma: 0% */
-  box-shadow: 0 6px 20px rgba(232,144,122,.35);
-  transition: background .25s, transform .2s, box-shadow .25s;
-}
-.modal-btn:hover {
-  background: #d96f56;
-  border-color: #d96f56;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(232,144,122,.45);
+  width: 100%;
+  padding: 10px 0;
+  background-color: #f19898;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+  transition: background-color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
 }
 
-/* ── TABLET ≥768px ── */
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: transparent;
+  border-color: #080c0c;
+
+}
+
+.modal-btn:active {
+  background-color: #c07979;
+  transform: scale(0.96);
+}
+
+.modal-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 24px;
+}
+
+.modal-stars svg {
+  width: 18px;
+  height: 18px;
+}
+
+.star-filled {
+  color: #f5a623;
+  fill: #f5a623;
+  stroke: #f5a623;
+}
+
+.star-half {
+  color: #f5a623;
+  fill: #f5a623;
+  stroke: #f5a623;
+}
+
+.star-empty {
+  color: #e0d0c0;
+  fill: transparent;
+  stroke: #e0d0c0;
+}
+
+.modal-stars .raty-star-on svg {
+  fill: #f5a623;
+  stroke: #f5a623;
+}
+
+.modal-stars .raty-star-half svg {
+  fill: #f5a623;
+  stroke: #f5a623;
+}
+
+.modal-stars .raty-star-off svg {
+  fill: transparent;
+  stroke: #e0d0c0;
+}
+
 @media only screen and (min-width: 768px) {
-  .modal-btn { width: 295px; }
+  .modal-overlay {
+    padding: 64px 32px;
+  }
 
   .modal {
-    max-width: 704px;
+    padding: 64px 32px;
+    min-width: 704px;
+    min-height: 960px;
     max-height: calc(100vh - 128px);
   }
 
-  .modal-image { height: 300px; }
+  .modal-image {
+    border-radius: 16px;
 
-  .modal-content { padding: 48px 32px; }
+    max-width: 640px;
+    width: 100%;
+    height: 480px;
+  }
 
-  .modal-title { font-size: 2rem; }
-
-  .modal-btn { width: 310px; }
+  .modal-btn {
+    width: 310px;
+  }
 }
 
-/* ── DESKTOP ≥1440px ── */
 @media only screen and (min-width: 1440px) {
-  .modal-btn { width: 295px; }
+  .modal-overlay {
+    padding: 64px;
+  }
 
   .modal {
     flex-direction: row;
-    max-width: 1280px;
-    height: 739px;
-    max-height: none;
-    overflow: hidden;
+    min-width: 1312px;
+    min-height: 611px;
+    max-height: calc(100vh - 128px);
+    padding: 64px;
+    gap: 24px;
   }
 
   .modal-image {
-    width: 42%; height: 100%;
-    flex-shrink: 0;
-    border-radius: var(--modal-radius) 0 0 var(--modal-radius); /* ← тільки ліві кути */
-  }
+    border-radius: 16px;
 
-  .modal-tag { display: inline-block; } /* ← показуємо тег на десктопі */
+    max-width: 580px;
+
+    height: 435px;
+  }
 
   .modal-content {
-    padding: 64px 56px;
-    justify-content: center;
-    overflow-y: auto;
+
+    padding-top: 70px;
   }
 
-  .modal-title { font-size: 2.5rem; }
+  .modal-title {
 
-  .modal-btn { width: 310px; }
+    font-size: 40px;
+
+    margin-bottom: 8px;
+  }
+
+  .modal-tag {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #080C0C;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .modal-title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #080c0c;
+    margin-bottom: 8px;
+  }
+
+  .modal-price {
+    font-size: 24px;
+  }
 }
