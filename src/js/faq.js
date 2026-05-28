@@ -1,5 +1,6 @@
 import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
+import iconSprite from '../img/icons/sprite.svg?url';
 
 const accordionWrapper = document.querySelector('.accordion-wrapper');
 
@@ -10,7 +11,7 @@ const accordionMarcup = `<div class="accordion-container">
           1. Які способи оплати ви приймаєте?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -27,7 +28,7 @@ const accordionMarcup = `<div class="accordion-container">
           2. Чи є у вас доставка?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -44,7 +45,7 @@ const accordionMarcup = `<div class="accordion-container">
           3. Як швидко здійснюється доставка?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -61,7 +62,7 @@ const accordionMarcup = `<div class="accordion-container">
           4. Чи можна забрати замовлення самостійно?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -78,7 +79,7 @@ const accordionMarcup = `<div class="accordion-container">
           5. Чи пропонуєте ви десерти для людей з особливими дієтичними потребами (безглютенові, безлактозні, веганські)?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -95,7 +96,7 @@ const accordionMarcup = `<div class="accordion-container">
           6. Як я можу зробити замовлення на індивідуальний торт?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -112,7 +113,7 @@ const accordionMarcup = `<div class="accordion-container">
           7. Чи можна змінити або скасувати замовлення після його оформлення?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -129,7 +130,7 @@ const accordionMarcup = `<div class="accordion-container">
           8. Який термін зберігання ваших десертів?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -146,7 +147,7 @@ const accordionMarcup = `<div class="accordion-container">
           9. Чи є у вас програма лояльності або знижки для постійних клієнтів?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
@@ -163,7 +164,7 @@ const accordionMarcup = `<div class="accordion-container">
           10. Що робити, якщо у мене є скарга або пропозиція?
 
           <svg class="accordion-icon" width="32" height="32">
-            <use href="/img/icons/sprite.svg#keyboard_arrow_down"></use>
+            <use href="${iconSprite}#keyboard_arrow_down"></use>
           </svg>
         </button>
       </h2>
