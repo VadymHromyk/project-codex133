@@ -25,7 +25,7 @@
     <script type="module" crossorigin src="/project-codex133/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-codex133/assets/vendor-B2TmBvB0.js">
     <link rel="stylesheet" crossorigin href="/project-codex133/assets/vendor-CsAmYNuR.css">
-    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-FJp34Pp7.css">
+    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-CxVEcPnF.css">
   </head>
   <body>
     <!-- Header -->
@@ -369,11 +369,99 @@
 
 
     <!-- Dessert details modal -->
-    <div class=""></div>
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modal">
 
+    <button class="modal-close" id="modalClose" aria-label="Закрити">
+      <svg width="32" height="32">
+        <use href="/project-codex133/assets/sprite-DppQYqKj.svg#close"></use>
+      </svg>
+    </button>
+
+    <div class="modal-image">
+      <img id="modalImg" src="" alt="" />
+    </div>
+
+    <div class="modal-content">
+
+      <span class="modal-tag" id="modalTag"></span>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <div class="modal-stars" id="modalStars"></div>
+
+      <div class="modal-divider"></div>
+
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-ingredients" id="modalIngredients"></p>
+
+      <div class="modal-footer">
+        <p class="modal-price" id="modalPrice"></p>
+        <button class="modal-btn" id="modalOrderBtn">Перейти до замовлення</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
     <!-- Order modal -->
-    <div class=""></div>
+    <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+  <div class="modal__backdrop"></div>
+  <div class="modal__window">
+    <button class="modal__close-btn" type="button" aria-label="Закрити модальне вікно">
+      <svg width="24" height="24" aria-hidden="true">
+        <use href="/project-codex133/assets/sprite-DppQYqKj.svg#close"></use>
+      </svg>
+    </button>
+
+    <h2 id="contact-modal-title" class="modal__title title">Оформлення замовлення</h2>
+
+    <form class="modal__form" id="contact-form" novalidate>
+      <div class="form-field">
+        <label class="form-field__label" for="contact-name">Ім'я*</label>
+        <input
+          class="form-field__input"
+          id="contact-name"
+          name="name"
+          type="text"
+          placeholder="Вікторія"
+          autocomplete="given-name"
+          required
+        />
+        <span class="form-field__error" role="alert"></span>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="contact-phone">Телефон*</label>
+        <input
+          class="form-field__input"
+          id="contact-phone"
+          name="phone"
+          type="tel"
+          placeholder="38 0__ ________"
+          autocomplete="tel"
+          required
+        />
+        <span class="form-field__error" role="alert"></span>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="contact-comment">Коментар*</label>
+        <textarea
+          class="form-field__input form-field__input--textarea"
+          id="contact-comment"
+          name="comment"
+          placeholder="Ваш коментар"
+          required
+        ></textarea>
+        <span class="form-field__error" role="alert"></span>
+      </div>
+
+      <button class="modal__submit-btn" type="submit">
+        <span class="modal__submit-text">Надіслати заявку</span>
+        <span class="modal__loader" aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
+</div>
 
 
   </body>
