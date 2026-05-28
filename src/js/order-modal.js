@@ -1,4 +1,6 @@
 import '../css/order-modal.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import { orderDessert } from './services/api/api.js';
 
 const modal = document.getElementById('contact-modal');
@@ -103,28 +105,23 @@ function setLoading(state) {
 }
 
 function showToast(message, type) {
-  const existingToast = document.querySelector('.order-toast');
-  if (existingToast) {
-    existingToast.remove();
+  if (type === 'success') {
+    iziToast.success({
+      message: message,
+      position: 'bottomCenter',
+      backgroundColor: 'var(--color-ice-cold-dark)',
+      messageColor: '#fff',
+      timeout: 3500,
+    });
+  } else {
+    iziToast.error({
+      message: message,
+      position: 'bottomCenter',
+      backgroundColor: 'var(--red)',
+      messageColor: '#fff',
+      timeout: 3500,
+    });
   }
-
-  const toast = document.createElement('div');
-  toast.classList.add('order-toast', 'order-toast--' + type);
-  toast.setAttribute('role', 'status');
-  toast.textContent = message;
-
-  document.body.appendChild(toast);
-
-  setTimeout(function() {
-    toast.classList.add('order-toast--visible');
-  }, 10);
-
-  setTimeout(function() {
-    toast.classList.remove('order-toast--visible');
-    setTimeout(function() {
-      toast.remove();
-    }, 300);
-  }, 3500);
 }
 
 async function handleSubmit(event) {

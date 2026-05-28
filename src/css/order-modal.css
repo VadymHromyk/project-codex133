@@ -1,3 +1,4 @@
+/* Contact Modal */
 
 .modal {
   position: fixed;
@@ -6,17 +7,14 @@
   width: 100%;
   height: 100%;
   z-index: 1000;
-
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-
-  padding: 16px;
-
+  padding: 20px 20px;
   visibility: hidden;
   pointer-events: none;
-
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .modal.is-open {
@@ -25,17 +23,13 @@
 }
 
 .modal__backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
-  background: rgba(8, 12, 12, 0.4);
-
+  background: var(--opacity-neutral-darkest-40);
   opacity: 0;
-
   transition: opacity 0.3s ease;
 }
 
@@ -43,29 +37,19 @@
   opacity: 1;
 }
 
+
 .modal__window {
   position: relative;
-
   width: 100%;
-  max-width: 375px;
-  max-height: calc(100vh - 32px);
-
-  overflow-y: auto;
-
-  background: #f5fdfd;
-
+  max-width: 335px;
+  background: var(--color-ice-cold-lightest);
   border-radius: 20px;
-
-  padding: 40px 24px 32px;
-
+  padding: 32px 16px;
   opacity: 0;
   transform: translateY(20px);
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-
+  transition: opacity 0.3s ease, transform 0.3s ease;
   box-sizing: border-box;
+  margin: auto;
 }
 
 .modal.is-open .modal__window {
@@ -74,41 +58,27 @@
 }
 
 
-
 .modal__close-btn {
   position: absolute;
   top: 16px;
   right: 16px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 28px;
   height: 28px;
-
-  color: #080c0c;
-
+  color: var(--color-scheme-1-text);
   transition: opacity 0.2s ease;
 }
 
-.modal__close-btn:hover,
-.modal__close-btn:focus {
+.modal__close-btn:hover {
   opacity: 0.6;
 }
 
 
 .modal__title {
-  margin-bottom: 24px;
-
-  font-family: "Comfortaa", sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.2;
-
   text-align: center;
-
-  color: #080c0c;
+  margin-bottom: 20px;
 }
 
 
@@ -128,41 +98,30 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
-
-  color: #080c0c;
+  color: var(--color-scheme-1-text);
 }
 
 .form-field__input {
   width: 100%;
-
   padding: 12px 16px;
-
+  font-family: var(--font-family);
   font-size: 14px;
   line-height: 1.5;
-
-  color: #080c0c;
-
-  background: #fff;
-
-  border: 1.5px solid #080c0c;
+  color: var(--color-scheme-1-text);
+  background: var(--color-ice-cold-lightest);
+  border: 1.5px solid var(--color-scheme-1-border);
   border-radius: 12px;
-
   outline: none;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-
+  transition: border-color 0.2s ease;
   box-sizing: border-box;
 }
 
 .form-field__input::placeholder {
-  color: #b4b6b6;
+  color: var(--color-neutral-light);
 }
 
 .form-field__input:focus {
-  border-color: #080c0c;
-  box-shadow: 0 0 0 3px rgba(8, 12, 12, 0.1);
+  border-color: var(--color-scheme-1-border);
 }
 
 .form-field__input--textarea {
@@ -170,23 +129,18 @@
   min-height: 130px;
 }
 
-/* Validation */
 
 .form-field__input.is-invalid {
-  border-color: #d50000;
+  border-color: var(--red);
 }
 
 .form-field__error {
-  min-height: 16px;
-
-  display: block;
-
   font-size: 12px;
   line-height: 1.4;
-
-  color: #d50000;
+  color: var(--red);
+  min-height: 16px;
+  display: block;
 }
-
 
 
 .modal__submit-btn {
@@ -194,40 +148,23 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   width: 100%;
-
   padding: 14px 24px;
   margin-top: 8px;
-
+  font-family: var(--font-family);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25;
-
-  color: #080c0c;
-
-  background: #f19898;
-
-  border: none;
+  color: var(--color-scheme-1-text);
+  background: var(--color-wewak);
   border-radius: 40px;
-
   cursor: pointer;
-
-  transition:
-    background-color 0.2s ease,
-    opacity 0.2s ease,
-    transform 0.2s ease;
-
+  transition: background-color 0.2s ease;
   box-sizing: border-box;
 }
 
-.modal__submit-btn:hover,
-.modal__submit-btn:focus {
-  background: #c07979;
-}
-
-.modal__submit-btn:active {
-  transform: scale(0.98);
+.modal__submit-btn:hover {
+  background: var(--color-wewak-dark);
 }
 
 .modal__submit-btn:disabled {
@@ -236,20 +173,14 @@
 }
 
 
-
 .modal__loader {
   display: none;
-
   width: 18px;
   height: 18px;
-
-  border: 2.5px solid rgba(8, 12, 12, 0.3);
-  border-top-color: #080c0c;
-
+  border: 2.5px solid var(--opacity-neutral-darkest-30);
+  border-top-color: var(--color-neutral-darkest);
   border-radius: 50%;
-
   animation: spin 0.7s linear infinite;
-
   flex-shrink: 0;
 }
 
@@ -267,56 +198,18 @@
   }
 }
 
-
-
-.order-toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  padding: 12px 24px;
-
-  border-radius: 40px;
-
-  font-size: 14px;
-  font-weight: 500;
-
-  color: #fff;
-
-  z-index: 2000;
-
-  white-space: nowrap;
-
-  opacity: 0;
-
-  transition: opacity 0.3s ease;
-}
-
-.order-toast--visible {
-  opacity: 1;
-}
-
-.order-toast--success {
-  background: #27ae60;
-}
-
-.order-toast--error {
-  background: #d50000;
-}
-
-
-
 @media only screen and (min-width: 768px) {
+  .modal {
+    padding: 32px 20px;
+  }
+
   .modal__window {
-    max-width: 480px;
-    padding: 48px 40px 40px;
+    max-width: 704px;
+    padding: 40px 32px;
   }
 
   .modal__title {
-    margin-bottom: 32px;
-    font-size: 36px;
+    margin-bottom: 24px;
   }
 
   .modal__form {
@@ -329,34 +222,25 @@
 
   .modal__submit-btn {
     width: auto;
-    min-width: 220px;
-
+    min-width: 200px;
     align-self: center;
   }
 }
 
 
-
 @media only screen and (min-width: 1440px) {
   .modal__window {
-    max-width: 760px;
-    padding: 64px 80px 56px;
+    max-width: 704px;
+    padding: 48px 40px;
   }
 
   .modal__title {
-    margin-bottom: 40px;
-    font-size: 48px;
-  }
-
-  .form-field__label {
-    font-size: 16px;
+    margin-bottom: 32px;
   }
 
   .form-field__input {
-    padding: 14px 20px;
-
     font-size: 16px;
-
+    padding: 14px 20px;
     border-radius: 14px;
   }
 
@@ -365,8 +249,7 @@
   }
 
   .modal__submit-btn {
-    padding: 16px 40px;
-
     font-size: 18px;
+    padding: 16px 40px;
   }
 }
