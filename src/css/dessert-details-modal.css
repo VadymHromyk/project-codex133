@@ -6,7 +6,7 @@
   height: 100%;
   z-index: 1000;
   background-color: rgba(46, 47, 66, 0.4);
-
+  padding: 64px 20px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -27,8 +27,8 @@
   background-color: #f5fdfd;
   width: 100%;
   max-width: 335px;
-
-  max-height: calc(100vh - 40px);
+  height: 711px;
+  max-height: calc(100vh - 128px);
   padding: 64px 20px;
   border-radius: 16px;
   display: flex;
@@ -129,12 +129,6 @@
   margin-bottom: 24px;
 }
 
-.modal-stars {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 24px;
-}
-
 
 .modal-divider {
   height: 1px;
@@ -200,7 +194,7 @@
 .modal-stars {
   display: flex;
   gap: 3px;
-  margin-bottom: 14px;
+  margin-bottom: 24px;
 }
 
 .modal-stars svg {
@@ -210,23 +204,47 @@
 
 .star-filled {
   color: #f5a623;
+  fill: #f5a623;
+  stroke: #f5a623;
 }
 
 .star-half {
   color: #f5a623;
+  fill: #f5a623;
+  stroke: #f5a623;
 }
 
 .star-empty {
   color: #e0d0c0;
+  fill: transparent;
+  stroke: #e0d0c0;
 }
 
+.modal-stars .raty-star-on svg {
+  fill: #f5a623;
+  stroke: #f5a623;
+}
 
+.modal-stars .raty-star-half svg {
+  fill: #f5a623;
+  stroke: #f5a623;
+}
+
+.modal-stars .raty-star-off svg {
+  fill: transparent;
+  stroke: #e0d0c0;
+}
 
 @media only screen and (min-width: 768px) {
+  .modal-overlay {
+    padding: 64px 32px;
+  }
+
   .modal {
-    padding: 64px 37px;
+    padding: 64px 32px;
     max-width: 704px;
-    max-height: 950px;
+    height: 960px;
+    max-height: calc(100vh - 128px);
   }
 
   .modal-image {
@@ -243,10 +261,15 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .modal-overlay {
+    padding: 64px;
+  }
+
   .modal {
     flex-direction: row;
     max-width: 1312px;
-    max-height: 611px;
+    height: 611px;
+    max-height: calc(100vh - 128px);
     padding: 64px;
     gap: 24px;
   }
