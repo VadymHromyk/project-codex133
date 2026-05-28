@@ -3,20 +3,20 @@ import 'izitoast/dist/css/iziToast.min.css';
 import Raty from 'raty-js';
 
 import { getDessertsById } from './services/api/api';
-import { openContactModal } from './order-modal';
+// import { openContactModal } from './order-modal';
 
 let currentDessertId = null;
 
 export async function openModal(id) {
-  const overlay          = document.getElementById('modalOverlay');
-  const closeBtn         = document.getElementById('modalClose');
-  const modalOrderBtn    = document.getElementById('modalOrderBtn');
-  const modalImg         = document.getElementById('modalImg');
-  const modalTag         = document.getElementById('modalTag');
-  const modalTitle       = document.getElementById('modalTitle');
-  const modalPrice       = document.getElementById('modalPrice');
-  const modalStars       = document.getElementById('modalStars');
-  const modalDesc        = document.getElementById('modalDesc');
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+  const modalOrderBtn = document.getElementById('modalOrderBtn');
+  const modalImg = document.getElementById('modalImg');
+  const modalTag = document.getElementById('modalTag');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalPrice = document.getElementById('modalPrice');
+  const modalStars = document.getElementById('modalStars');
+  const modalDesc = document.getElementById('modalDesc');
   const modalIngredients = document.getElementById('modalIngredients');
 
   if (!overlay) {
@@ -28,12 +28,12 @@ export async function openModal(id) {
     const dessert = await getDessertsById(id);
     currentDessertId = dessert.id;
 
-    modalImg.src               = dessert.image;
-    modalImg.alt               = dessert.name;
-    modalTag.textContent       = dessert.category?.name ?? '';
-    modalTitle.textContent     = dessert.name;
-    modalPrice.textContent     = `${dessert.price} грн`;
-    modalDesc.textContent      = dessert.description;
+    modalImg.src = dessert.image;
+    modalImg.alt = dessert.name;
+    modalTag.textContent = dessert.category?.name ?? '';
+    modalTitle.textContent = dessert.name;
+    modalPrice.textContent = `${dessert.price} грн`;
+    modalDesc.textContent = dessert.description;
     modalIngredients.innerHTML = `<strong>Склад:</strong> ${dessert.composition ?? ''}`;
 
     // raty-js для зірочок
@@ -48,16 +48,25 @@ export async function openModal(id) {
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
 
-    closeBtn.addEventListener('click', () => closeModal(overlay), { once: true });
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) closeModal(overlay);
-    }, { once: true });
-    modalOrderBtn.addEventListener('click', () => {
-      closeModal(overlay);
-      openContactModal({ id: currentDessertId });
-    }, { once: true });
-
-  } catch(e) {
+    closeBtn.addEventListener('click', () => closeModal(overlay), {
+      once: true,
+    });
+    overlay.addEventListener(
+      'click',
+      e => {
+        if (e.target === overlay) closeModal(overlay);
+      },
+      { once: true }
+    );
+    modalOrderBtn.addEventListener(
+      'click',
+      () => {
+        closeModal(overlay);
+        // openContactModal({ id: currentDessertId });
+      },
+      { once: true }
+    );
+  } catch (e) {
     console.error(e);
     iziToast.error({
       message: 'Не вдалося завантажити десерт',
