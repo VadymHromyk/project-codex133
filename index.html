@@ -25,7 +25,7 @@
     <script type="module" crossorigin src="/project-codex133/index.js"></script>
     <link rel="modulepreload" crossorigin href="/project-codex133/assets/vendor-B2TmBvB0.js">
     <link rel="stylesheet" crossorigin href="/project-codex133/assets/vendor-CsAmYNuR.css">
-    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-CIoQPHQy.css">
+    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-XqK-kspU.css">
   </head>
   <body>
     <!-- Header -->
@@ -370,7 +370,38 @@
 
     <!-- Dessert details modal -->
     <div class=""></div>
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modal">
 
+    <button class="modal-close" id="modalClose" aria-label="Закрити">
+      <svg width="32" height="32">
+        <use href="/project-codex133/assets/sprite-DppQYqKj.svg#close"></use>
+      </svg>
+    </button>
+
+    <div class="modal-image">
+      <img id="modalImg" src="" alt="" />
+    </div>
+
+    <div class="modal-content">
+
+      <span class="modal-tag" id="modalTag"></span>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <div class="modal-stars" id="modalStars"></div>
+
+      <div class="modal-divider"></div>
+
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-ingredients" id="modalIngredients"></p>
+
+      <div class="modal-footer">
+        <p class="modal-price" id="modalPrice"></p>
+        <button class="modal-btn" id="modalOrderBtn">Перейти до замовлення</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
     <!-- Order modal -->
     <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
