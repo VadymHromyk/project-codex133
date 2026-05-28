@@ -40,7 +40,8 @@
     transform: none;
   }
 
-  .about_us__slide {
+  /* Оставляем !important только тут, так как Swiper пишет inline-ширину через JS */
+  #about-us .about_us__slide {
     width: 100% !important;
   }
 
@@ -64,15 +65,11 @@
     margin-right: auto;
   }
 
-  .about_us__text {
-    font-size: 16px;
-  }
-
   #about-us .about_us__swiper {
     padding-bottom: 40px;
   }
 
-  .about_us__swiper .swiper-wrapper {
+  #about-us .about_us__swiper .swiper-wrapper {
     display: flex;
     flex-direction: row;
     gap: 0;
@@ -90,20 +87,22 @@
     display: block;
   }
 
-  .about_us__controls {
+  #about-us .about_us__controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: absolute;
     left: 0;
+    bottom: 40px;
     width: 100%;
     height: 252px;
-    bottom: 40px;
-    pointer-events: none;
     z-index: 15;
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: 0 32px;
   }
 
-  .about_us__btn {
+  #about-us .about_us__btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,9 +111,6 @@
     border-radius: 50%;
     cursor: pointer;
     outline: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: #ffffff;
     border: 2px solid #080c0c;
     color: #080c0c;
@@ -126,7 +122,7 @@
       transform 0.1s ease;
   }
 
-  .about_us__btn svg {
+  #about-us .about_us__btn svg {
     width: 24px;
     height: 24px;
     stroke: #080c0c;
@@ -134,43 +130,49 @@
     pointer-events: none;
   }
 
-  .about_us__btn::after {
+  #about-us .about_us__btn::after {
     display: none;
   }
 
-  .about_us__btn--prev {
-    left: 32px;
+  #about-us .about_us__controls .about_us__btn.swiper-button-prev,
+  #about-us .about_us__controls .about_us__btn.swiper-button-next {
+    position: static;
+    margin-top: 0;
   }
 
-  .about_us__btn--next {
-    right: 32px;
+  #about-us .about_us__controls .about_us__btn.swiper-button-prev {
+    transform: translateX(-50%);
   }
 
-  .about_us__btn:hover,
-  .about_us__btn:focus-visible {
+  #about-us .about_us__controls .about_us__btn.swiper-button-next {
+    transform: translateX(50%);
+  }
+
+  #about-us .about_us__btn:hover,
+  #about-us .about_us__btn:focus-visible {
     background-color: #f19898;
     border-color: #080c0c;
     color: #080c0c;
   }
 
-  .about_us__btn--prev:active {
+  #about-us .about_us__controls .about_us__btn.swiper-button-prev:active {
     background-color: #c07979;
-    transform: translateY(-50%) scale(0.93);
+    transform: translateX(-50%) scale(0.93);
   }
 
-  .about_us__btn--next:active {
+  #about-us .about_us__controls .about_us__btn.swiper-button-next:active {
     background-color: #c07979;
-    transform: translateY(-50%) scale(0.93);
+    transform: translateX(50%) scale(0.93);
   }
 
-  .about_us__btn.swiper-button-disabled {
+  #about-us .about_us__btn.swiper-button-disabled {
     background-color: transparent;
     border-color: rgba(8, 12, 12, 0.3);
     cursor: not-allowed;
     pointer-events: none;
   }
 
-  .about_us__btn.swiper-button-disabled svg {
+  #about-us .about_us__btn.swiper-button-disabled svg {
     stroke: rgba(8, 12, 12, 0.3);
   }
 
@@ -186,13 +188,13 @@
     pointer-events: auto;
   }
 
-  .about_us__pagination .swiper-pagination-bullet {
+  #about-us .about_us__pagination .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
     background-color: #d1c7c4;
     border-radius: 50%;
     opacity: 1;
-    margin: 0 !important;
+    margin: 0;
     cursor: pointer;
     pointer-events: auto;
     transition:
@@ -200,7 +202,7 @@
       transform 0.3s ease;
   }
 
-  .about_us__pagination .swiper-pagination-bullet:hover {
+  #about-us .about_us__pagination .swiper-pagination-bullet:hover {
     background-color: #080c0c;
     transform: scale(1.2);
   }
@@ -222,15 +224,16 @@
     height: 478px;
   }
 
-  .about_us__controls {
+  #about-us .about_us__controls {
     height: 478px;
+    padding: 0 64px;
   }
 
-  .about_us__btn--prev {
-    left: 64px;
+  #about-us .about_us__controls .about_us__btn.swiper-button-prev:active {
+    transform: translateX(-50%) scale(0.93);
   }
 
-  .about_us__btn--next {
-    right: 64px;
+  #about-us .about_us__controls .about_us__btn.swiper-button-next:active {
+    transform: translateX(50%) scale(0.93);
   }
 }
