@@ -23,9 +23,9 @@
     />
     <!-- Styles -->
     <script type="module" crossorigin src="/project-codex133/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-codex133/assets/vendor-t7rkesM2.js">
+    <link rel="modulepreload" crossorigin href="/project-codex133/assets/vendor-B2TmBvB0.js">
     <link rel="stylesheet" crossorigin href="/project-codex133/assets/vendor-CsAmYNuR.css">
-    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-BI9M5INE.css">
+    <link rel="stylesheet" crossorigin href="/project-codex133/assets/index-Biz5fwaP.css">
   </head>
   <body>
     <!-- Header -->
@@ -253,8 +253,46 @@
 
 
       <!-- Feedback section -->
-      <section id="feedback" class="section">
-  <div class="container">Feedback</div>
+      <section class="feedbacks-section section" id="feedback">
+  <div class="container">
+    <h2 class="section-title">Відгуки клієнтів</h2>
+    <p class="section-description">
+      Дізнайтеся, що кажуть наші задоволені клієнти
+    </p>
+
+    <div class="swiper-rel-wrapper">
+      <button
+        type="button"
+        class="gallery__button-prev"
+        aria-label="Попередній відгук"
+      >
+        <svg class="arrow-icon">
+          <use href="/project-codex133/assets/sprite-DppQYqKj.svg#arrow_back"></use>
+        </svg>
+      </button>
+
+      <div class="swiper gallery__swiper">
+        <div class="swiper-wrapper" id="feedbacks-container"></div>
+      </div>
+
+      <button
+        type="button"
+        class="gallery__button-next"
+        aria-label="Наступний відгук"
+      >
+        <svg class="arrow-icon">
+          <use href="/project-codex133/assets/sprite-DppQYqKj.svg#arrow_forward"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="slider-layout-wrapper">
+      <div class="slider-controls-group">
+        <div class="swiper-pagination gallery__pagination"></div>
+        <div class="mobile-buttons-placeholder"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
