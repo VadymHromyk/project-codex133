@@ -3,13 +3,50 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { orderDessert } from './services/api/api.js';
 
-const modal = document.getElementById('contact-modal');
-const backdrop = modal.querySelector('.modal__backdrop');
-const closeBtn = modal.querySelector('.modal__close-btn');
-const form = document.getElementById('contact-form');
-const submitBtn = form.querySelector('.modal__submit-btn');
+let modal;
+let backdrop;
+let closeBtn;
+let form;
+let submitBtn;
+
+function init() {
+  modal = document.getElementById('contact-modal');
+  backdrop = modal.querySelector('.modal__backdrop');
+  closeBtn = modal.querySelector('.modal__close-btn');
+  form = document.getElementById('contact-form');
+  submitBtn = form.querySelector('.modal__submit-btn');
+
+  backdrop.addEventListener('click', closeContactModal);
+  closeBtn.addEventListener('click', closeContactModal);
+
+  form.addEventListener('focusout', function(event) {
+    const input = event.target;
+    if (input.name) {
+      validateField(input);
+    }
+  });
+
+  form.addEventListener('input', function(event) {
+    const input = event.target;
+    if (input.classList.contains('is-invalid')) {
+      validateField(input);
+    }
+  });
+
+  form.addEventListener('submit', handleSubmit);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+    closeContactModal();
+  }
+});
 
 export function openContactModal(dessert) {
+  if (!modal) init();
+
   if (dessert) {
     form.dataset.dessertId = dessert.id;
     form.dataset.dessertName = dessert.name;
@@ -30,8 +67,6 @@ function closeContactModal() {
   delete form.dataset.dessertId;
   delete form.dataset.dessertName;
 }
-
-
 
 const validators = {
   name(value) {
@@ -104,26 +139,6 @@ function setLoading(state) {
   submitBtn.disabled = state;
 }
 
-function showToast(message, type) {
-  if (type === 'success') {
-    iziToast.success({
-      message: message,
-      position: 'bottomCenter',
-      backgroundColor: 'var(--color-ice-cold-dark)',
-      messageColor: '#fff',
-      timeout: 3500,
-    });
-  } else {
-    iziToast.error({
-      message: message,
-      position: 'bottomCenter',
-      backgroundColor: 'var(--red)',
-      messageColor: '#fff',
-      timeout: 3500,
-    });
-  }
-}
-
 async function handleSubmit(event) {
   event.preventDefault();
 
@@ -146,41 +161,25 @@ async function handleSubmit(event) {
   try {
     await orderDessert(payload);
     closeContactModal();
-    showToast('Дякуємо! Ваше замовлення прийнято. Менеджер зв\'яжеться з вами незабаром.', 'success');
+    iziToast.success({
+      message: 'Дякуємо! Ваше замовлення прийнято. Менеджер зв\'яжеться з вами незабаром.',
+      position: 'bottomCenter',
+      backgroundColor: '#7fc0bf',
+      messageColor: '#fff',
+      timeout: 3500,
+    });
   } catch (error) {
     console.error(error);
-    showToast('Щось пішло не так. Будь ласка, спробуйте ще раз.', 'error');
+    iziToast.error({
+      message: 'Щось пішло не так. Будь ласка, спробуйте ще раз.',
+      position: 'bottomCenter',
+      backgroundColor: '#d50000',
+      messageColor: '#fff',
+      timeout: 3500,
+    });
   } finally {
     setLoading(false);
   }
 }
-
-
-
-backdrop.addEventListener('click', closeContactModal);
-
-closeBtn.addEventListener('click', closeContactModal);
-
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-    closeContactModal();
-  }
-});
-
-form.addEventListener('focusout', function(event) {
-  const input = event.target;
-  if (input.name) {
-    validateField(input);
-  }
-});
-
-form.addEventListener('input', function(event) {
-  const input = event.target;
-  if (input.classList.contains('is-invalid')) {
-    validateField(input);
-  }
-});
-
-form.addEventListener('submit', handleSubmit);
 
 export { closeContactModal };
