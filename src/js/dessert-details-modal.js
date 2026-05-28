@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import Raty from 'raty-js';
 
 import { getDessertsById } from './services/api/api';
-import { openContactModal } from './order-modal';
+// import { openContactModal } from './order-modal';
 
 let currentDessertId = null;
 
@@ -50,7 +50,7 @@ export async function openModal(id) {
     }, { once: true });
     modalOrderBtn.addEventListener('click', () => {
       closeModal(overlay);
-      openContactModal({ id: currentDessertId });
+      // openContactModal({ id: currentDessertId });
     }, { once: true });
 
   } catch {
