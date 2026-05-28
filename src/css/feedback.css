@@ -1,0 +1,255 @@
+.feedbacks-section {
+  padding: 40px 0;
+  background-color: #f5fdfd;
+  overflow: hidden;
+}
+
+.feedbacks-section .container {
+  position: relative;
+  width: 100%;
+}
+
+.swiper-rel-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 64px;
+}
+
+.gallery__swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery__swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.gallery__button-prev,
+.gallery__button-next {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #111111;
+  background-color: #ffffff;
+  color: #111111;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.1s ease;
+  outline: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+}
+
+.arrow-icon {
+  fill: none;
+  stroke: #080c0c;
+  stroke-width: 2px;
+  transition: stroke 0.25s ease;
+}
+
+.arrow-icon path {
+  fill: none;
+  stroke: #080c0c;
+  stroke-width: 2px;
+}
+
+.gallery__button-prev {
+  right: 56px;
+}
+
+.gallery__button-next {
+  right: 0;
+}
+
+.gallery__button-prev:hover,
+.gallery__button-next:hover,
+.gallery__button-prev:focus-visible,
+.gallery__button-next:focus-visible {
+  background-color: #f19898;
+  border-color: #080c0c;
+  color: #080c0c;
+}
+
+.gallery__button-prev:active,
+.gallery__button-next:active {
+  background-color: #c07979;
+  border-color: #080c0c;
+  color: #080c0c;
+  transform: scale(0.95);
+}
+
+.gallery__button-prev.swiper-button-disabled,
+.gallery__button-next.swiper-button-disabled {
+  background-color: #f5fdfd;
+  border-color: #080c0c;
+  color: #080c0c;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* Пагінація (Мобільна версія) */
+.slider-layout-wrapper {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: auto;
+  z-index: 5;
+  padding-left: 20px;
+}
+
+.slider-controls-group {
+  display: flex;
+  align-items: center;
+}
+
+.gallery__pagination.swiper-pagination-bullets {
+  position: static;
+  width: auto;
+  text-align: left;
+}
+
+.gallery__pagination .swiper-pagination-bullet {
+  background-color: #e0e0e0;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+}
+
+.gallery__pagination .swiper-pagination-bullet-active {
+  background-color: #111111;
+}
+
+.section-title {
+  font-family: var(--second-family);
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #080c0c;
+}
+
+.section-description {
+  font-family: var(--font-family);
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: #080c0c;
+}
+
+.testimonial-card {
+  border: 2px solid #111111;
+  border-radius: 20px;
+  padding: 24px;
+  background-color: #f5fdfd;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.star-rating.js-raty-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.review-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #080c0c;
+  margin-top: 0;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.client-name {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: #080c0c;
+  margin-top: auto;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .swiper-rel-wrapper {
+    padding-bottom: 0;
+  }
+
+  .gallery__button-prev,
+  .gallery__button-next {
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .gallery__button-prev:active,
+  .gallery__button-next:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .gallery__button-prev {
+    left: -22px;
+    right: auto;
+  }
+
+  .gallery__button-next {
+    right: -22px;
+  }
+
+  .slider-layout-wrapper {
+    position: static;
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .slider-controls-group {
+    justify-content: center;
+  }
+
+  .testimonial-card {
+    min-height: 233px;
+    padding: 20px;
+  }
+
+  .review-text {
+    font-size: 16px;
+    line-height: 140%;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .gallery__swiper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 48px;
+  }
+  .section-description {
+    margin-bottom: 80px;
+  }
+}
