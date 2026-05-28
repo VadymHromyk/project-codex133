@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-import izitoast from 'izitoast';
+import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,17 +9,18 @@ import starOn from '../img/icons/star-on.svg';
 import starOff from '../img/icons/star-off.svg';
 import starHalf from '../img/icons/star-half.svg';
 import Raty from 'raty-js';
+import { getFeedback } from './services/api/api.js';
 
-const BaseURL = 'https://deserts-store.b.goit.study/api';
 let feedbackSliderInstance = null;
 
 async function fetchAndRenderFeedbacks() {
   try {
-    const response = await fetch(`${BaseURL}/feedbacks`);
-    if (!response.ok) throw new Error('Помилка завантаження даних');
+    const data = await getFeedback();
+    if (!data) throw new Error('Помилка завантаження даних');
 
-    const data = await response.json();
-    const feedbacksArray = (data.feedbacks || []).slice(0, 10);
+    const feedbacksArray = (
+      Array.isArray(data) ? data : data.feedbacks || []
+    ).slice(0, 10);
 
     const container = document.getElementById('feedbacks-container');
     if (!container) return;
