@@ -19,10 +19,7 @@ export async function openModal(id) {
   const modalDesc        = document.getElementById('modalDesc');
   const modalIngredients = document.getElementById('modalIngredients');
 
-  if (!overlay) {
-    console.error('modalOverlay не знайдено в DOM');
-    return;
-  }
+  if (!overlay) return;
 
   try {
     const dessert = await getDessertsById(id);
@@ -36,7 +33,6 @@ export async function openModal(id) {
     modalDesc.textContent      = dessert.description;
     modalIngredients.innerHTML = `<strong>Склад:</strong> ${dessert.composition ?? ''}`;
 
-    // raty-js для зірочок
     modalStars.innerHTML = '';
     new Raty(modalStars, {
       readOnly: true,
@@ -57,8 +53,7 @@ export async function openModal(id) {
       openContactModal({ id: currentDessertId });
     }, { once: true });
 
-  } catch(e) {
-    console.error(e);
+  } catch {
     iziToast.error({
       message: 'Не вдалося завантажити десерт',
       theme: 'dark',
