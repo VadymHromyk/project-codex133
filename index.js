@@ -27,7 +27,7 @@ import{a as ee,i as b,R as j,S as z,N as F,P as N,A as te}from"./assets/vendor-D
           <div class="star-rating js-raty-stars" id="${l}"
           data-score="${a.rate||5}"></div>
           <p class="review-text">"${a.description||""}"</p>
-          <h4 class="client-name">${a.author||"Anonim"}</h4>
+          <h3 class="client-name">${a.author||"Anonim"}</h3>
         </div>
       `,s.appendChild(r);const g=r.querySelector(".js-raty-stars");g&&new j(g,{score:a.rate||5,readOnly:!0,half:!0,halfShow:!0,starType:"img",path:"",starOn:R,starOff:V,starHalf:G}).init()}),Le()}catch{b.error({title:"Помилка",message:"Помилка завантаження відгуків:",position:"topRight"})}}function Le(){_&&_.destroy(!0,!0),_=new z(".gallery__swiper",{modules:[F,N],direction:"horizontal",slidesPerView:1,spaceBetween:20,grabCursor:!0,navigation:{nextEl:".gallery__button-next",prevEl:".gallery__button-prev"},pagination:{el:".gallery__pagination",clickable:!0},breakpoints:{768:{slidesPerView:3,spaceBetween:16},1280:{slidesPerView:3,spaceBetween:24}}})}document.addEventListener("DOMContentLoaded",()=>{we()});const Ee=document.querySelector(".accordion-wrapper"),_e=`<div class="accordion-container">
     <div class="ac">
