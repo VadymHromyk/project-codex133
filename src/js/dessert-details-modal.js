@@ -27,7 +27,7 @@ export async function openModal(id) {
 
   try {
     const dessert = await getDessertsById(id);
-    currentDessertId = dessert.id;
+    currentDessertId = dessert._id;
 
     modalImg.src = dessert.image;
     modalImg.alt = dessert.name;
