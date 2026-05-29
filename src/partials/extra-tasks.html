@@ -1,233 +1,54 @@
-<!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<section class="popular-products">
+  <div class="container">
 
-    <title>Popular Products</title>
+    <div class="title-wrapper">
+      <h2 class="section-title">
+        Наші бестселери
+      </h2>
+    </div>
 
+    <div class="slider-wrapper">
+      <div
+        class="slider-track"
+        id="sliderTrack"
+      ></div>
+    </div>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Work+Sans:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <div class="slider-navigation">
 
-
-    <link rel="stylesheet" href="./css/extra-tasks.css" />
-  </head>
-
-  <body>
-    <section class="popular-products">
-      <div class="container">
-
-
-        <div class="section-title-wrapper">
-          <h2 class="section-title">Наші бестселлери</h2>
-        </div>
-
-
-        <div class="slider-wrapper">
-          <div class="slider-track" id="sliderTrack">
-     
-            <article class="product-card">
-              <img
-                src="./src/images/chocolate-brownie.png"
-                alt="Брауні"
-                class="product-image"
-              />
-
-              <div class="product-content">
-                <div class="product-header">
-                  <p class="product-category">Шоколадні випічки</p>
-
-                  <div class="product-info">
-                    <h3 class="product-title">Брауні з горіхами</h3>
-
-                    <p class="product-description">
-                      Соковитий шоколадний пиріг з хрусткими горіхами.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="product-bottom">
-                  <p class="product-price">110 грн</p>
-
-                  <button type="button" class="product-button">
-                    <img
-                      src="./src/images/icons/arrow-outward.svg"
-                      alt="arrow"
-                    />
-                  </button>
-                </div>
-              </div>
-            </article>
-
-
-            <article class="product-card">
-              <img
-                src="./src/images/chocolate-fondant.png"
-                alt="Тарт"
-                class="product-image"
-              />
-
-              <div class="product-content">
-                <div class="product-header">
-                  <p class="product-category">Фруктові десерти</p>
-
-                  <div class="product-info">
-                    <h3 class="product-title">Фруктовий тарт</h3>
-
-                    <p class="product-description">
-                      Пісочна основа з заварним кремом та свіжими фруктами.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="product-bottom">
-                  <p class="product-price">140 грн</p>
-
-                  <button type="button" class="product-button">
-                    <img
-                      src="./src/images/icons/arrow-outward.svg"
-                      alt="arrow"
-                    />
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <article class="product-card">
-              <img
-                src="src/images/lavender-infused cupcake.png"
-                alt="Кекс"
-                class="product-image"
-              />
-
-              <div class="product-content">
-                <div class="product-header">
-                  <p class="product-category">Незвичайні десерти</p>
-
-                  <div class="product-info">
-                    <h3 class="product-title">Лавандовий кекс</h3>
-
-                    <p class="product-description">
-                      Ароматний кекс з ніжним лавандовим смаком.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="product-bottom">
-                  <p class="product-price">90 грн</p>
-
-                  <button type="button" class="product-button">
-                    <img
-                      src="./src/images/icons/arrow-outward.svg"
-                      alt="arrow"
-                    />
-                  </button>
-                </div>
-              </div>
-            </article>
-
-
-            <article class="product-card">
-              <img
-                src="./src/images/chocolate-brownie.png"
-                alt="Чізкейк"
-                class="product-image"
-              />
-
-              <div class="product-content">
-                <div class="product-header">
-                  <p class="product-category">Класичні десерти</p>
-
-                  <div class="product-info">
-                    <h3 class="product-title">Чізкейк</h3>
-
-                    <p class="product-description">
-                      Ніжний вершковий десерт з ягідним соусом.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="product-bottom">
-                  <p class="product-price">150 грн</p>
-
-                  <button type="button" class="product-button">
-                    <img
-                      src="./src/images/icons/arrow-outward.svg"
-                      alt="arrow"
-                    />
-                  </button>
-                </div>
-              </div>
-            </article>
-
-
-            <article class="product-card">
-              <img
-                src="./src/images/chocolate-fondant.png"
-                alt="Мус"
-                class="product-image"
-              />
-
-              <div class="product-content">
-                <div class="product-header">
-                  <p class="product-category">Мусові десерти</p>
-
-                  <div class="product-info">
-                    <h3 class="product-title">Шоколадний мус</h3>
-
-                    <p class="product-description">
-                      Легкий та повітряний мус з темного шоколаду.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="product-bottom">
-                  <p class="product-price">120 грн</p>
-
-                  <button type="button" class="product-button">
-                    <img
-                      src="./src/images/icons/arrow-outward.svg"
-                      alt="arrow"
-                    />
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-
-        <div class="slider-navigation">
-
-          <div class="slider-dots">
-            <img
-              src="./src/images/icons/Slider-Dots.svg"
-              alt="slider dots"
-            />
-          </div>
-
-
-          <div class="slider-buttons">
-            <button
-              type="button"
-              class="slider-arrow"
-              id="prevBtn"
-              disabled
-            >
-              <img src="./src/images/icons/arrow-left.svg" alt="left" />
-            </button>
-
-            <button type="button" class="slider-arrow" id="nextBtn">
-              <img src="./src/images/icons/arrow-right.svg" alt="right" />
-            </button>
-          </div>
-        </div>
+      <div class="slider-dots">
+        <img
+          src="./src/images/icons/Slider-Dots.svg"
+          alt="slider dots"
+        />
       </div>
-    </section>
 
-    <script src="./js/extra-tasks.js"></script>
-  </body>
-</html>
+      <div class="slider-buttons">
+
+        <button
+          type="button"
+          class="slider-btn"
+          id="prevBtn"
+        >
+          <img
+            src="./src/images/icons/arrow-left.svg"
+            alt="left arrow"
+          />
+        </button>
+
+        <button
+          type="button"
+          class="slider-btn"
+          id="nextBtn"
+        >
+          <img
+            src="./src/images/icons/arrow-right.svg"
+            alt="right arrow"
+          />
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</section>
