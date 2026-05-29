@@ -36,7 +36,7 @@ async function fetchAndRenderFeedbacks() {
           <div class="star-rating js-raty-stars" id="${ratyId}"
           data-score="${item.rate || 5}"></div>
           <p class="review-text">"${item.description || ''}"</p>
-          <h4 class="client-name">${item.author || 'Anonim'}</h4>
+          <h3 class="client-name">${item.author || 'Anonim'}</h3>
         </div>
       `;
       container.appendChild(slide);
