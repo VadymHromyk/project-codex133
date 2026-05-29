@@ -73,6 +73,7 @@ async function filterByCategory(event) {
   showLoader();
   hideLoadMoreBtn();
   currentCategory = event.target.value;
+  syncCategoryUI(currentCategory);
   if (!currentCategory) {
     showError('Помилка завантаження');
     return;
@@ -156,7 +157,17 @@ async function loadMoreDesserts() {
     hideLoader();
   }
 }
+function syncCategoryUI(categoryId) {
+  selectContainer.value = categoryId;
 
+  const radio = document.querySelector(
+    `.dessert-category-input[value="${categoryId}"]`
+  );
+
+  if (radio) {
+    radio.checked = true;
+  }
+}
 function openDessertModal(event) {
   const btn = event.target.closest('.dessert-list-btn');
 
@@ -183,7 +194,7 @@ function renderCategoriesBtn(arr) {
   const markup = arr
     .map(
       ({ name, _id }) => `
-   <label for="${_id}" class="dessert-category-label">
+   <label class="dessert-category-label">
         <input ${_id === 'all' ? 'checked' : ''}
         id="${_id}" type="radio" name="category" 
         value="${_id}" class="dessert-category-input" />
