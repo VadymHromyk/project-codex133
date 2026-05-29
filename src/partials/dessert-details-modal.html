@@ -1,7 +1,11 @@
-<div class=""></div>
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal" id="modal">
-
+<div
+  class="modal-overlay"
+  id="modalOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalTitle"
+>
+  <div class="dess-modal" id="modal">
     <button class="modal-close" id="modalClose" aria-label="Закрити">
       <svg width="32" height="32">
         <use href="/img/icons/sprite.svg#close"></use>
@@ -13,21 +17,21 @@
     </div>
 
     <div class="modal-content">
-
-      <span class="modal-tag" id="modalTag"></span>
+      <!-- <span class="modal-tag" id="modalTag"></span> -->
       <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-price" id="modalPrice"></p>
       <div class="modal-stars" id="modalStars"></div>
 
-      <div class="modal-divider"></div>
+      <!-- <div class="modal-divider"></div> -->
 
       <p class="modal-desc" id="modalDesc"></p>
       <p class="modal-ingredients" id="modalIngredients"></p>
 
       <div class="modal-footer">
-        <p class="modal-price" id="modalPrice"></p>
-        <button class="modal-btn" id="modalOrderBtn">Перейти до замовлення</button>
+        <button class="modal-btn" id="modalOrderBtn">
+          Перейти до замовлення
+        </button>
       </div>
-
     </div>
   </div>
 </div>

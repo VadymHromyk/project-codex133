@@ -4,14 +4,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 9;
   background-color: rgba(46, 47, 66, 0.4);
-  padding: 64px 20px;
+  /* padding: 64px 20px; */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition:
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -22,11 +23,11 @@
   pointer-events: auto;
 }
 
-.modal {
-  position: absolute;
+.dess-modal {
+  position: fixed;
   background-color: #f5fdfd;
-  max-width: 335px;
-  height: 711px;
+  max-width: 375px;
+  /* height: 711px; */
   max-height: 90vh;
   padding: 64px 20px;
   border-radius: 16px;
@@ -37,10 +38,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 10;
 }
 
+.modal-overlay.active .dess-modal {
+  opacity: 1;
+  visibility: visible;
+}
 
-.modal::-webkit-scrollbar {
+.dess-modal::-webkit-scrollbar {
   display: none;
 }
 
@@ -62,7 +69,7 @@
 .modal-close svg {
   display: block;
   fill: white;
-  stroke: #080C0C;
+  stroke: #080c0c;
 }
 
 .modal-close:hover,
@@ -87,12 +94,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-
 }
 
-
 .modal-content {
-
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -119,7 +123,7 @@
 }
 
 .modal-price {
-  font-family: "Comfortaa", sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.4;
@@ -128,7 +132,6 @@
   margin-bottom: 24px;
 }
 
-
 .modal-divider {
   height: 1px;
   background: #f0e8df;
@@ -136,7 +139,7 @@
 }
 
 .modal-desc {
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -144,9 +147,8 @@
   margin-bottom: 24px;
 }
 
-
 .modal-ingredients {
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -158,8 +160,6 @@
   font-weight: 700;
 }
 
-
-
 .modal-btn {
   display: flex;
   justify-content: center;
@@ -168,12 +168,13 @@
   width: 100%;
   padding: 10px 0;
   background-color: #f19898;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   color: #080c0c;
-  transition: background-color 250ms ease,
+  transition:
+    background-color 250ms ease,
     border-color 250ms ease,
     transform 250ms ease;
 }
@@ -182,7 +183,6 @@
 .modal-btn:focus {
   background-color: transparent;
   border-color: #080c0c;
-
 }
 
 .modal-btn:active {
@@ -239,7 +239,7 @@
     padding: 64px 32px;
   }
 
-  .modal {
+  .dess-modal {
     padding: 64px 32px;
     min-width: 704px;
     min-height: 960px;
@@ -264,7 +264,7 @@
     padding: 64px;
   }
 
-  .modal {
+  .dess-modal {
     flex-direction: row;
     min-width: 1312px;
     min-height: 611px;
@@ -282,12 +282,10 @@
   }
 
   .modal-content {
-
     padding-top: 70px;
   }
 
   .modal-title {
-
     font-size: 40px;
 
     margin-bottom: 8px;
@@ -298,7 +296,7 @@
     font-size: 14px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: #080C0C;
+    color: #080c0c;
     font-weight: 500;
     margin-bottom: 8px;
   }

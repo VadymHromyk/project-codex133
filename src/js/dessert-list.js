@@ -7,7 +7,7 @@ import {
   getDesserts,
   getDessertsById,
 } from './services/api/api';
-// import {openModal} from './dessert-details-modal';
+import { openModal } from './dessert-details-modal';
 const selectContainer = document.querySelector('.dessert-list-select');
 const categoriesContainer = document.querySelector('.dessert-categories-list');
 const loader = document.querySelector('.loader');
