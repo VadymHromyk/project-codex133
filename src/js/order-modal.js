@@ -148,7 +148,7 @@ async function handleSubmit(event) {
 
   const payload = {
     name: formData.get('name').trim(),
-    phone: formData.get('phone').trim(),
+    phone: formData.get('phone').trim().replace('+', ''),
     comment: formData.get('comment').trim(),
   };
 
