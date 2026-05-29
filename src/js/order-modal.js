@@ -82,6 +82,7 @@ const validators = {
   },
   comment(value) {
     if (!value.trim()) return 'Коментар є обов\'язковим полем';
+    if (value.trim().length < 2) return 'Коментар повинен містити щонайменше 2 символи';
     return null;
   },
 };

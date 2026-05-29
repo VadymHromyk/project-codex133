@@ -4,17 +4,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9;
+  z-index: 1000;
   background-color: rgba(46, 47, 66, 0.4);
-  /* padding: 64px 20px; */
+  padding: 64px 20px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 
-  transition:
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-y: auto;
 }
 
 .modal-overlay.active {
@@ -24,10 +24,11 @@
 }
 
 .dess-modal {
-  position: fixed;
+  position: absolute;
   background-color: #f5fdfd;
-  max-width: 375px;
-  /* height: 711px; */
+  max-width: 335px;
+  width: 100%;
+  /* min-height: 711px; */
   max-height: 90vh;
   padding: 64px 20px;
   border-radius: 16px;
@@ -38,14 +39,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  z-index: 10;
+  z-index: 18;
+  box-sizing: border-box;
 }
 
-.modal-overlay.active .dess-modal {
-  opacity: 1;
-  visibility: visible;
-}
 
 .dess-modal::-webkit-scrollbar {
   display: none;
@@ -69,7 +66,7 @@
 .modal-close svg {
   display: block;
   fill: white;
-  stroke: #080c0c;
+  stroke: #080C0C;
 }
 
 .modal-close:hover,
@@ -84,8 +81,10 @@
 .modal-image {
   border-radius: 16px;
   overflow: hidden;
-  width: 295px;
-  min-height: 221px;
+  width: 100%;
+  max-width: 295px;
+  height: 221px;
+  flex-shrink: 0;
   margin-bottom: 24px;
 }
 
@@ -94,9 +93,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+
 }
 
+
 .modal-content {
+
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -123,7 +125,7 @@
 }
 
 .modal-price {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: "Comfortaa", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.4;
@@ -132,6 +134,7 @@
   margin-bottom: 24px;
 }
 
+
 .modal-divider {
   height: 1px;
   background: #f0e8df;
@@ -139,7 +142,7 @@
 }
 
 .modal-desc {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -147,8 +150,9 @@
   margin-bottom: 24px;
 }
 
+
 .modal-ingredients {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -160,6 +164,8 @@
   font-weight: 700;
 }
 
+
+
 .modal-btn {
   display: flex;
   justify-content: center;
@@ -168,13 +174,12 @@
   width: 100%;
   padding: 10px 0;
   background-color: #f19898;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   color: #080c0c;
-  transition:
-    background-color 250ms ease,
+  transition: background-color 250ms ease,
     border-color 250ms ease,
     transform 250ms ease;
 }
@@ -183,6 +188,7 @@
 .modal-btn:focus {
   background-color: transparent;
   border-color: #080c0c;
+
 }
 
 .modal-btn:active {
@@ -235,14 +241,14 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .modal-overlay {
+  /* .modal-overlay {
     padding: 64px 32px;
-  }
+  } */
 
   .dess-modal {
     padding: 64px 32px;
-    min-width: 704px;
-    min-height: 960px;
+    max-width: 704px;
+    height: 960px;
     max-height: calc(100vh - 128px);
   }
 
@@ -250,7 +256,7 @@
     border-radius: 16px;
 
     max-width: 640px;
-    width: 100%;
+
     height: 480px;
   }
 
@@ -266,9 +272,9 @@
 
   .dess-modal {
     flex-direction: row;
-    min-width: 1312px;
-    min-height: 611px;
-    max-height: calc(100vh - 128px);
+    max-width: 1312px;
+    max-height: 611px;
+    /* max-height: calc(100vh - 128px); */
     padding: 64px;
     gap: 24px;
   }
@@ -278,14 +284,16 @@
 
     max-width: 580px;
 
-    height: 435px;
+    max-height: 435px;
   }
 
   .modal-content {
+
     padding-top: 70px;
   }
 
   .modal-title {
+
     font-size: 40px;
 
     margin-bottom: 8px;
@@ -296,7 +304,7 @@
     font-size: 14px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: #080c0c;
+    color: #080C0C;
     font-weight: 500;
     margin-bottom: 8px;
   }
