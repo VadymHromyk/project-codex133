@@ -12,13 +12,6 @@
   display: block;
 }
 
-.mobile-nav-item {
-  font-size: 16px;
-  line-height: 32px;
-  font-weight: 400;
-  color: #080c0c;
-}
-
 .menu-burger-btn {
   padding: 12px;
   margin: 12px 0 12px auto;
@@ -75,8 +68,10 @@
   font-size: 16px;
   line-height: 32px;
   color: #080c0c;
+  font-weight: 400;
   padding: 12px 0;
 }
+
 .mob-btn-shop {
   display: flex;
   justify-content: center;
@@ -121,11 +116,12 @@
 
   .nav-list-item:hover,
   .nav-list-item:focus {
-    opacity: 0.5;
+    text-decoration: underline;
+    text-underline-offset: 7px;
   }
 
   .nav-list-item:active {
-    opacity: 1;
+    color: #f19898;
   }
 
   .btn-shop {
@@ -135,11 +131,21 @@
     flex-direction: row;
     gap: 8px;
     font-weight: 500;
-    border: 1px solid #f19898;
+    border: 2px solid #f19898;
     border-radius: 100px;
     padding-inline: 20px;
     height: 40px;
     background: #f19898;
+    box-sizing: border-box;
+  }
+
+  .btn-shop:hover,
+  .btn-shop:focus {
+    border: 2px solid #080c0c;
+  }
+
+  .btn-shop:active {
+    background: #f5b6b6;
   }
 }
 
