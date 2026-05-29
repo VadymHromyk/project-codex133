@@ -26,6 +26,8 @@ export async function openModal(id) {
   if (!overlay) return;
 
   try {
+    modalImg.src = '';
+    modalImg.alt = '';
     const dessert = await getDessertsById(id);
     currentDessertId = dessert._id;
 
