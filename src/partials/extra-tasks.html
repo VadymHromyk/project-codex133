@@ -1,54 +1,24 @@
-<section class="popular-products">
+<section class="popular">
   <div class="container">
-
-    <div class="title-wrapper">
-      <h2 class="section-title">
-        Наші бестселери
-      </h2>
-    </div>
-
-    <div class="slider-wrapper">
-      <div
-        class="slider-track"
-        id="sliderTrack"
-      ></div>
-    </div>
-
-    <div class="slider-navigation">
-
-      <div class="slider-dots">
-        <img
-          src="./src/images/icons/Slider-Dots.svg"
-          alt="slider dots"
-        />
-      </div>
-
-      <div class="slider-buttons">
-
-        <button
-          type="button"
-          class="slider-btn"
-          id="prevBtn"
-        >
-          <img
-            src="./src/images/icons/arrow-left.svg"
-            alt="left arrow"
-          />
-        </button>
-
-        <button
-          type="button"
-          class="slider-btn"
-          id="nextBtn"
-        >
-          <img
-            src="./src/images/icons/arrow-right.svg"
-            alt="right arrow"
-          />
-        </button>
-
+    <h2 class="popular-title">Наші бестселлери</h2>
+    <div class="popular-swiper">
+      <ul class="popular-list swiper-wrapper"></ul>
+      <div class="swiper-settings">
+        <div class="popular-pagination swiper-pagination"></div>
+        <div class="popular-navigation swiper-navigation">
+          <button class="navigation-previus">
+            <svg class="swiper-navigation-icon" width="24" height="24">
+              <use href="/src/img/icons/arrow-left.svg"></use>
+            </svg>
+          </button>
+          <button class="navigation-next">
+            <svg class="swiper-navigation-icon" width="24" height="24">
+              <use href="/src/img/icons/arrow-right.svg"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-
+    <div class="popular-loader"></div>
   </div>
 </section>
